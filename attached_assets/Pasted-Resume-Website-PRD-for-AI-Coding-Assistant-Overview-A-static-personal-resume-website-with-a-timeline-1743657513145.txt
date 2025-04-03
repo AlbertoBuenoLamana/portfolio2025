@@ -1,0 +1,53 @@
+Resume Website PRD for AI Coding Assistant
+Overview
+A static personal resume website with a timeline-based interface that visually represents the professional journey from 2019 to present, with a forward-looking section for future goals. The site will feature responsive design, bilingual support, and clear categorization of skills and projects.
+Core Requirements
+Timeline Feature
+
+Interactive timeline from 2019 (graduation) through 2025, with a final node for "Motivations/Objectives/Current Technologies"
+Parallel tracks to separate personal and professional projects
+Click interaction on timeline nodes to display representative images (placeholders initially)
+Full timeline visibility without scrolling on initial page load
+
+Content Organization
+
+Technologies grouped by categories in separate sections
+Clear distinction between personal and professional projects
+Chronological presentation of experience and skills development
+Final section for motivations, objectives, and current technologies
+
+Design & UX
+
+Minimal scrolling design (most content visible on first load)
+Clean, modern interface using Tailwind CSS and shadcn/ui components
+Responsive layout optimized for all device sizes
+Visual elements for each timeline node
+
+Language Support
+
+Bilingual functionality (Spanish/English)
+Spanish as default language
+Easy language toggle
+
+Technical Specifications
+
+Static website (no database connections required)
+Built with Tailwind CSS for styling
+UI components from shadcn/ui library
+Optimized load times and performance
+SEO-friendly structure
+
+Additional Features
+
+Contact button linking to LinkedIn profile
+Image placeholders (to be replaced with actual content later)
+Clean typography and visual hierarchy
+
+Implementation Guidelines
+
+Create reusable components for timeline nodes, section containers
+Implement language switching through context or state management
+Ensure accessibility compliance
+Optimize for performance with minimal JavaScript
+Make timeline interactive with subtle animations for engagement
+Ensure cross-browser compatibility
