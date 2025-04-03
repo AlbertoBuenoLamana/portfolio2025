@@ -24,31 +24,31 @@ const Skills: React.FC = () => {
     {
       id: 'backend',
       title: t('backend'),
-      color: 'text-blue-500',
+      color: 'text-secondary',
       skills: ['Java 8/21', 'Spring Boot', 'Hibernate', 'JPA', 'Python', 'PHP', 'REST API', 'Maven']
     },
     {
       id: 'tools',
       title: t('tools'),
-      color: 'text-green-500',
+      color: 'text-accent',
       skills: ['Git', 'Docker', 'Jira', 'Trello', 'Swagger', 'VS Code', 'Azure DevOps', 'AWS CodeBuild', 'AWS CodeDeploy']
     },
     {
       id: 'design',
       title: t('design'),
-      color: 'text-purple-500',
+      color: 'text-purple-500 dark:text-purple-300',
       skills: ['JasperReports', 'AI Coding Assistants', 'Cursor', 'Claude', 'Ollama', 'Windsurf', 'n8n']
     },
     {
       id: 'mobileDev',
       title: t('mobileDev'),
-      color: 'text-amber-500',
+      color: 'text-amber-500 dark:text-amber-300',
       skills: ['AWS Lambda', 'AWS S3', 'AWS EC2', 'DynamoDB', 'API Gateway', 'RDS', 'Cloudwatch', 'SES', 'SAM']
     },
     {
       id: 'softSkills',
       title: t('softSkills'),
-      color: 'text-red-500',
+      color: 'text-red-500 dark:text-red-300',
       skills: ['MySQL', 'PostgreSQL', 'DynamoDB', 'MongoDB']
     }
   ];
@@ -74,7 +74,7 @@ const Skills: React.FC = () => {
                 {category.skills.map((skill, index) => (
                   <span 
                     key={`${category.id}-${index}`}
-                    className="px-3 py-1 bg-muted rounded-full text-sm font-medium"
+                    className="px-3 py-1 bg-card border border-border rounded-full text-sm font-medium"
                   >
                     {skill}
                   </span>

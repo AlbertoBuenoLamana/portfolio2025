@@ -91,7 +91,7 @@ const Goals: React.FC = () => {
               {techAreas.map((area) => (
                 <div 
                   key={area.id}
-                  className="bg-muted p-4 rounded-lg"
+                  className="bg-card p-4 rounded-lg border border-border"
                 >
                   <h4 className="font-medium mb-2">{area.title}</h4>
                   <p className="text-sm text-muted-foreground">{area.description}</p>

@@ -205,19 +205,19 @@ const Timeline: React.FC = () => {
         badge: 'bg-primary/10 text-primary',
       },
       secondary: {
-        bg: 'bg-secondary text-secondary-foreground',
+        bg: 'bg-secondary/20 text-secondary',
         node: 'bg-secondary text-secondary-foreground',
-        badge: 'bg-secondary text-secondary-foreground',
+        badge: 'bg-secondary/20 text-secondary',
       },
       accent: {
-        bg: 'bg-accent text-accent-foreground',
+        bg: 'bg-accent/20 text-accent',
         node: 'bg-accent text-accent-foreground',
-        badge: 'bg-accent text-accent-foreground',
+        badge: 'bg-accent/20 text-accent',
       },
       future: {
-        bg: 'bg-muted text-muted-foreground',
-        node: 'bg-gradient-to-r from-primary to-accent text-primary-foreground',
-        badge: 'bg-muted text-muted-foreground',
+        bg: 'bg-card text-card-foreground',
+        node: 'bg-gradient-to-r from-primary to-secondary text-primary-foreground',
+        badge: 'bg-card text-card-foreground',
       }
     };
     
@@ -304,9 +304,9 @@ const Timeline: React.FC = () => {
         </p>
       </div>
       
-      <div className="relative">
+      <div className="relative pb-16">
         {/* Main Timeline Line */}
-        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-border transform md:translate-x-px shadow-md rounded-full"></div>
+        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-primary transform md:translate-x-px shadow-md"></div>
         
         {/* Timeline Container */}
         <div className="relative">
@@ -399,7 +399,7 @@ const Timeline: React.FC = () => {
                         <span className="text-[10px] font-bold">{node.year}</span>
                       )}
                     </button>
-                    <div className="h-16 w-1 bg-primary mt-1 shadow-sm rounded-full"></div>
+                    <div className="h-16 w-1 bg-primary mt-1 shadow-sm"></div>
                   </div>
                   
                   {/* Right Side (Personal) */}
