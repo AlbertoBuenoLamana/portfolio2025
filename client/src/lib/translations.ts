@@ -112,11 +112,11 @@ type TranslationKeys = {
 export const translations: Record<Language, TranslationKeys> = {
   es: {
     // Header
-    pageTitle: 'Mi Trayectoria Profesional',
+    pageTitle: 'Alberto Bueno Lamana',
     contact: 'Contacto',
     
     // Timeline
-    timeline: 'Línea de tiempo',
+    timeline: 'Trayectoria Profesional',
     timelineDesc: 'Mi recorrido profesional desde 2019 hasta la actualidad, con un vistazo hacia el futuro.',
     professional: 'Profesional',
     personal: 'Personal',
@@ -124,45 +124,45 @@ export const translations: Record<Language, TranslationKeys> = {
     motivation: 'Motivación',
     
     // Timeline Nodes
-    node2019Prof: 'Graduación Universitaria',
-    node2019ProfDesc: 'Licenciatura en Ingeniería Informática',
-    node2019Pers: 'Proyecto de Videojuego',
-    node2019PersDesc: 'Desarrollo de un videojuego indie con Unity',
+    node2019Prof: 'Grado Superior DAW',
+    node2019ProfDesc: 'Desarrollo de Aplicaciones Web en IES Santiago Hernández',
+    node2019Pers: 'Selenium Fifa',
+    node2019PersDesc: 'Proyecto con Java y Selenium para automatizar compra/venta de jugadores en FIFA',
     
-    node2020Prof: 'Primer Trabajo',
-    node2020ProfDesc: 'Desarrollador Junior en Startup Tech',
-    node2020Pers: 'Aprendizaje de React',
-    node2020PersDesc: 'Cursos y proyectos personales con React',
+    node2020Prof: 'Desarrollador Full Stack en Inycom',
+    node2020ProfDesc: 'Migración de Polymer 2 a Polymer 3 en proyecto MainRail',
+    node2020Pers: 'MainRail',
+    node2020PersDesc: 'Pruebas unitarias con Selenium y desarrollo del aplicativo para mantenimiento de ferrocarriles',
     
-    node2021Prof: 'Promoción a Desarrollador',
-    node2021ProfDesc: 'Desarrollador Frontend en Agencia Digital',
-    node2021Pers: 'Certificación en UX/UI',
-    node2021PersDesc: 'Completé un programa de certificación en diseño UX/UI',
+    node2021Prof: 'Carnet Joven Islas Baleares',
+    node2021ProfDesc: 'Desarrollo de plataforma en Java 8 y Angular 7 para gestión de usuarios',
+    node2021Pers: 'Yeezy Scrapper',
+    node2021PersDesc: 'Script de Python para verificar precios de zapatillas en StockX utilizando AWS SAM',
     
-    node2022Prof: 'Proyecto E-commerce',
-    node2022ProfDesc: 'Lideré el desarrollo frontend de una plataforma e-commerce',
-    node2022Pers: 'Desarrollo de App Móvil',
-    node2022PersDesc: 'Desarrollé una app móvil con React Native',
+    node2022Prof: 'Continuación en Inycom',
+    node2022ProfDesc: 'Mantenimiento de productos y desarrollo de proyectos en Angular y Java',
+    node2022Pers: 'Inicio de Gym App',
+    node2022PersDesc: 'Comienzo del desarrollo de aplicación web para gestión de gimnasios con Angular y Spring Boot',
     
-    node2023Prof: 'Desarrollador Senior',
-    node2023ProfDesc: 'Promoción a Desarrollador Senior en compañía de tecnología',
-    node2023Pers: 'Contribuciones Open Source',
-    node2023PersDesc: 'Comencé a contribuir a proyectos de código abierto',
+    node2023Prof: 'AWS Certified Developer',
+    node2023ProfDesc: 'Certificación como AWS Developer Associate y proyecto Morabanc en Angular 13',
+    node2023Pers: 'Avance en Gym App',
+    node2023PersDesc: 'Implementación de CI/CD en AWS y uso de DynamoDB para la aplicación de gimnasios',
     
-    node2024Prof: 'Líder Técnico',
-    node2024ProfDesc: 'Rol de liderazgo técnico en equipo de desarrollo',
-    node2024Pers: 'Mentor de Desarrollo Web',
-    node2024PersDesc: 'Comencé a mentorizar a estudiantes de desarrollo web',
+    node2024Prof: 'Proyecto CLUN',
+    node2024ProfDesc: 'Desarrollo de API con Spring Boot 3 y Java 21 con integraciones',
+    node2024Pers: 'Vibe Coding',
+    node2024PersDesc: 'Uso de herramientas de IA como Cursor, Windsurf, Claude y Ollama para desarrollo',
     
-    node2025Prof: 'Arquitecto de Software',
-    node2025ProfDesc: 'Objetivo: Evolucionar a rol de arquitectura',
-    node2025Pers: 'Startup Propia',
-    node2025PersDesc: 'Objetivo: Lanzar mi propia startup de tecnología',
+    node2025Prof: 'Especialización Cloud',
+    node2025ProfDesc: 'Objetivo: Profundizar en servicios cloud y arquitecturas escalables',
+    node2025Pers: 'LolImprove',
+    node2025PersDesc: 'Aplicación full-stack con React, TypeScript, FastAPI y SQLAlchemy para mejorar en League of Legends',
     
     nodeFutureProf: 'Visión Profesional',
-    nodeFutureProfDesc: 'Liderar equipos de innovación tecnológica',
+    nodeFutureProfDesc: 'Arquitectura de sistemas cloud y desarrollo full-stack a gran escala',
     nodeFutureMot: 'Tecnologías Actuales',
-    nodeFutureMotDesc: 'React, NextJS, TailwindCSS, Node.js, AWS',
+    nodeFutureMotDesc: 'Angular, Spring Boot, AWS, AI Coding Assistants, TypeScript, Python',
     
     // Skills
     skills: 'Habilidades',
@@ -171,25 +171,25 @@ export const translations: Record<Language, TranslationKeys> = {
     backend: 'Backend',
     tools: 'Herramientas',
     design: 'Diseño',
-    mobileDev: 'Desarrollo Móvil',
-    softSkills: 'Habilidades Blandas',
+    mobileDev: 'Cloud',
+    softSkills: 'Bases de Datos',
     
     // Projects
     projects: 'Proyectos Destacados',
     projectsDesc: 'Una selección de proyectos profesionales y personales en los que he trabajado.',
     viewDetails: 'Ver detalles',
     
-    project1Title: 'Plataforma E-commerce',
-    project1Desc: 'Desarrollo frontend de una plataforma e-commerce con React, Redux y Node.js.',
+    project1Title: 'MainRail (2020-2023)',
+    project1Desc: 'Proyecto para mantenimiento de ferrocarriles. Migración de Polymer 2 a Polymer 3 y posteriormente trabajo en PHP y Polymer.',
     
-    project2Title: 'Aplicación Móvil',
-    project2Desc: 'Aplicación de seguimiento de actividad física desarrollada con React Native.',
+    project2Title: 'Morabanc (2023-2024)',
+    project2Desc: 'Proyecto bancario en Angular 13. Migración desde AngularJS con foco en rendimiento y usabilidad.',
     
-    project3Title: 'Dashboard Analytics',
-    project3Desc: 'Dashboard de análisis de datos para empresa de marketing con visualizaciones interactivas.',
+    project3Title: 'Carnet Joven Islas Baleares (2019-2021)',
+    project3Desc: 'Plataforma de gestión de usuarios con Java 8, Spring, Hibernate, Angular 7 e integraciones AWS.',
     
-    project4Title: 'Videojuego Indie',
-    project4Desc: 'Videojuego 2D de plataformas desarrollado con Unity y C#.',
+    project4Title: 'Gym App (2022-2025)',
+    project4Desc: 'Aplicación para gestión de gimnasios con Angular, Spring Boot, AWS y DynamoDB.',
     
     // Goals
     goalsSection: 'Objetivos y Motivación',
@@ -197,34 +197,34 @@ export const translations: Record<Language, TranslationKeys> = {
     profGoals: 'Objetivos Profesionales',
     persMotivations: 'Motivaciones Personales',
     currentTech: 'Tecnologías Actuales',
-    currentTechDesc: 'Actualmente estoy enfocado en las siguientes tecnologías y áreas de interés:',
+    currentTechDesc: 'En 2024 he iniciado mi viaje en Vibe Coding, utilizando herramientas de IA para desarrollo.',
     
-    modernFrontend: 'Frontend Moderno',
-    backendCloud: 'Backend & Cloud',
-    areasOfInterest: 'Áreas de Interés',
+    modernFrontend: 'Angular & TypeScript',
+    backendCloud: 'Spring Boot & AWS',
+    areasOfInterest: 'AI Coding & Automatización',
     
     // Professional Goals List
-    profGoal1: 'Evolucionar hacia roles de arquitectura de software.',
-    profGoal2: 'Liderar equipos de desarrollo e innovación tecnológica.',
-    profGoal3: 'Contribuir a proyectos que generen impacto social positivo.',
-    profGoal4: 'Especializarme en soluciones cloud y arquitecturas escalables.',
+    profGoal1: 'Expandir mi experiencia en servicios cloud de AWS.',
+    profGoal2: 'Profundizar en arquitecturas de software escalables.',
+    profGoal3: 'Mejorar en el uso de herramientas de IA para desarrollo.',
+    profGoal4: 'Implementar sistemas robustos con CI/CD y microservicios.',
     
     // Personal Motivations List
-    persMot1: 'Crear productos que mejoren la vida de las personas.',
-    persMot2: 'Aprender constantemente nuevas tecnologías y metodologías.',
-    persMot3: 'Lanzar mi propia startup con enfoque en sostenibilidad.',
-    persMot4: 'Mentorizar a futuros desarrolladores y compartir conocimiento.',
+    persMot1: 'Completar proyectos personales como Gym App y LolImprove.',
+    persMot2: 'Continuar explorando la integración de LLMs con desarrollo.',
+    persMot3: 'Optimizar flujos de trabajo con automatización y AI coding.',
+    persMot4: 'Compartir conocimientos sobre Vibe Coding en la comunidad.',
     
     // Footer
-    copyright: '© 2024 Mi Trayectoria Profesional'
+    copyright: '© 2024 Alberto Bueno Lamana'
   },
   en: {
     // Header
-    pageTitle: 'My Professional Journey',
+    pageTitle: 'Alberto Bueno Lamana',
     contact: 'Contact',
     
     // Timeline
-    timeline: 'Timeline',
+    timeline: 'Professional Journey',
     timelineDesc: 'My professional journey from 2019 to present, with a look toward the future.',
     professional: 'Professional',
     personal: 'Personal',
@@ -232,45 +232,45 @@ export const translations: Record<Language, TranslationKeys> = {
     motivation: 'Motivation',
     
     // Timeline Nodes
-    node2019Prof: 'University Graduation',
-    node2019ProfDesc: 'Bachelor in Computer Engineering',
-    node2019Pers: 'Video Game Project',
-    node2019PersDesc: 'Development of an indie game with Unity',
+    node2019Prof: 'Higher Degree in Web Development',
+    node2019ProfDesc: 'Web Application Development at IES Santiago Hernández',
+    node2019Pers: 'Selenium Fifa',
+    node2019PersDesc: 'Java and Selenium project to automate FIFA player trading',
     
-    node2020Prof: 'First Job',
-    node2020ProfDesc: 'Junior Developer at Tech Startup',
-    node2020Pers: 'Learning React',
-    node2020PersDesc: 'Courses and personal projects with React',
+    node2020Prof: 'Full Stack Developer at Inycom',
+    node2020ProfDesc: 'Migration from Polymer 2 to Polymer 3 in MainRail project',
+    node2020Pers: 'MainRail',
+    node2020PersDesc: 'Unit testing with Selenium and development of railway maintenance application',
     
-    node2021Prof: 'Promotion to Developer',
-    node2021ProfDesc: 'Frontend Developer at Digital Agency',
-    node2021Pers: 'UX/UI Certification',
-    node2021PersDesc: 'Completed a UX/UI design certification program',
+    node2021Prof: 'Balearic Islands Youth Card',
+    node2021ProfDesc: 'Platform development with Java 8 and Angular 7 for user management',
+    node2021Pers: 'Yeezy Scrapper',
+    node2021PersDesc: 'Python script to check sneaker prices on StockX using AWS SAM',
     
-    node2022Prof: 'E-commerce Project',
-    node2022ProfDesc: 'Led the frontend development of an e-commerce platform',
-    node2022Pers: 'Mobile App Development',
-    node2022PersDesc: 'Developed a mobile app with React Native',
+    node2022Prof: 'Continued at Inycom',
+    node2022ProfDesc: 'Product maintenance and project development with Angular and Java',
+    node2022Pers: 'Started Gym App',
+    node2022PersDesc: 'Beginning development of gym management web application with Angular and Spring Boot',
     
-    node2023Prof: 'Senior Developer',
-    node2023ProfDesc: 'Promotion to Senior Developer at tech company',
-    node2023Pers: 'Open Source Contributions',
-    node2023PersDesc: 'Started contributing to open source projects',
+    node2023Prof: 'AWS Certified Developer',
+    node2023ProfDesc: 'AWS Developer Associate certification and Morabanc project with Angular 13',
+    node2023Pers: 'Gym App Progress',
+    node2023PersDesc: 'Implementation of CI/CD in AWS and DynamoDB for the gym application',
     
-    node2024Prof: 'Tech Lead',
-    node2024ProfDesc: 'Technical leadership role in development team',
-    node2024Pers: 'Web Development Mentoring',
-    node2024PersDesc: 'Started mentoring web development students',
+    node2024Prof: 'CLUN Project',
+    node2024ProfDesc: 'API development with Spring Boot 3 and Java 21 with integrations',
+    node2024Pers: 'Vibe Coding',
+    node2024PersDesc: 'Using AI tools like Cursor, Windsurf, Claude and Ollama for development',
     
-    node2025Prof: 'Software Architect',
-    node2025ProfDesc: 'Goal: Evolve to architecture role',
-    node2025Pers: 'Own Startup',
-    node2025PersDesc: 'Goal: Launch my own tech startup',
+    node2025Prof: 'Cloud Specialization',
+    node2025ProfDesc: 'Goal: Deepen knowledge in cloud services and scalable architectures',
+    node2025Pers: 'LolImprove',
+    node2025PersDesc: 'Full-stack app with React, TypeScript, FastAPI and SQLAlchemy to improve at League of Legends',
     
     nodeFutureProf: 'Professional Vision',
-    nodeFutureProfDesc: 'Lead technological innovation teams',
+    nodeFutureProfDesc: 'Cloud system architecture and large-scale full-stack development',
     nodeFutureMot: 'Current Technologies',
-    nodeFutureMotDesc: 'React, NextJS, TailwindCSS, Node.js, AWS',
+    nodeFutureMotDesc: 'Angular, Spring Boot, AWS, AI Coding Assistants, TypeScript, Python',
     
     // Skills
     skills: 'Skills',
@@ -279,25 +279,25 @@ export const translations: Record<Language, TranslationKeys> = {
     backend: 'Backend',
     tools: 'Tools',
     design: 'Design',
-    mobileDev: 'Mobile Development',
-    softSkills: 'Soft Skills',
+    mobileDev: 'Cloud',
+    softSkills: 'Databases',
     
     // Projects
     projects: 'Featured Projects',
     projectsDesc: 'A selection of professional and personal projects I have worked on.',
     viewDetails: 'View details',
     
-    project1Title: 'E-commerce Platform',
-    project1Desc: 'Frontend development of an e-commerce platform with React, Redux and Node.js.',
+    project1Title: 'MainRail (2020-2023)',
+    project1Desc: 'Railway maintenance project. Migration from Polymer 2 to Polymer 3 and later work with PHP and Polymer.',
     
-    project2Title: 'Mobile App',
-    project2Desc: 'Fitness tracking app developed with React Native.',
+    project2Title: 'Morabanc (2023-2024)',
+    project2Desc: 'Banking project in Angular 13. Migration from AngularJS with focus on performance and usability.',
     
-    project3Title: 'Analytics Dashboard',
-    project3Desc: 'Data analytics dashboard for marketing company with interactive visualizations.',
+    project3Title: 'Balearic Islands Youth Card (2019-2021)',
+    project3Desc: 'User management platform with Java 8, Spring, Hibernate, Angular 7 and AWS integrations.',
     
-    project4Title: 'Indie Game',
-    project4Desc: '2D platform game developed with Unity and C#.',
+    project4Title: 'Gym App (2022-2025)',
+    project4Desc: 'Application for gym management with Angular, Spring Boot, AWS and DynamoDB.',
     
     // Goals
     goalsSection: 'Goals and Motivation',
@@ -305,25 +305,25 @@ export const translations: Record<Language, TranslationKeys> = {
     profGoals: 'Professional Goals',
     persMotivations: 'Personal Motivations',
     currentTech: 'Current Technologies',
-    currentTechDesc: 'I am currently focused on the following technologies and areas of interest:',
+    currentTechDesc: 'In 2024 I started my Vibe Coding journey, using AI tools for development.',
     
-    modernFrontend: 'Modern Frontend',
-    backendCloud: 'Backend & Cloud',
-    areasOfInterest: 'Areas of Interest',
+    modernFrontend: 'Angular & TypeScript',
+    backendCloud: 'Spring Boot & AWS',
+    areasOfInterest: 'AI Coding & Automation',
     
     // Professional Goals List
-    profGoal1: 'Evolve toward software architecture roles.',
-    profGoal2: 'Lead development teams and technological innovation.',
-    profGoal3: 'Contribute to projects that generate positive social impact.',
-    profGoal4: 'Specialize in cloud solutions and scalable architectures.',
+    profGoal1: 'Expand my experience with AWS cloud services.',
+    profGoal2: 'Deepen knowledge in scalable software architectures.',
+    profGoal3: 'Improve use of AI tools for development.',
+    profGoal4: 'Implement robust systems with CI/CD and microservices.',
     
     // Personal Motivations List
-    persMot1: 'Create products that improve people\'s lives.',
-    persMot2: 'Constantly learn new technologies and methodologies.',
-    persMot3: 'Launch my own startup with a focus on sustainability.',
-    persMot4: 'Mentor future developers and share knowledge.',
+    persMot1: 'Complete personal projects like Gym App and LolImprove.',
+    persMot2: 'Continue exploring LLM integration with development.',
+    persMot3: 'Optimize workflows with automation and AI coding.',
+    persMot4: 'Share knowledge about Vibe Coding in the community.',
     
     // Footer
-    copyright: '© 2024 My Professional Journey'
+    copyright: '© 2024 Alberto Bueno Lamana'
   }
 };

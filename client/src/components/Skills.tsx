@@ -19,37 +19,37 @@ const Skills: React.FC = () => {
       id: 'frontend',
       title: t('frontend'),
       color: 'text-primary',
-      skills: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Vue.js', 'NextJS', 'TailwindCSS', 'SASS']
+      skills: ['HTML5', 'CSS3', 'TypeScript', 'Angular', 'Polymer', 'Material Design', 'TailwindCSS', 'SASS']
     },
     {
       id: 'backend',
       title: t('backend'),
-      color: 'text-secondary',
-      skills: ['Node.js', 'Express', 'Python', 'Django', 'MongoDB', 'PostgreSQL', 'Firebase', 'REST API', 'GraphQL']
+      color: 'text-blue-500',
+      skills: ['Java 8/21', 'Spring Boot', 'Hibernate', 'JPA', 'Python', 'PHP', 'REST API', 'Maven']
     },
     {
       id: 'tools',
       title: t('tools'),
-      color: 'text-accent',
-      skills: ['Git', 'GitHub', 'Docker', 'AWS', 'Figma', 'VS Code', 'Webpack', 'Jest', 'Cypress']
+      color: 'text-green-500',
+      skills: ['Git', 'Docker', 'Jira', 'Trello', 'Swagger', 'VS Code', 'Azure DevOps', 'AWS CodeBuild', 'AWS CodeDeploy']
     },
     {
       id: 'design',
       title: t('design'),
-      color: 'text-primary-light',
-      skills: ['UI/UX', 'Figma', 'Adobe XD', 'Sketch', 'Photoshop', 'Illustrator', 'Wireframing', 'Prototyping']
+      color: 'text-purple-500',
+      skills: ['JasperReports', 'AI Coding Assistants', 'Cursor', 'Claude', 'Ollama', 'Windsurf', 'n8n']
     },
     {
       id: 'mobileDev',
       title: t('mobileDev'),
-      color: 'text-secondary-light',
-      skills: ['React Native', 'Flutter', 'iOS', 'Android', 'Responsive Design', 'PWA']
+      color: 'text-amber-500',
+      skills: ['AWS Lambda', 'AWS S3', 'AWS EC2', 'DynamoDB', 'API Gateway', 'RDS', 'Cloudwatch', 'SES', 'SAM']
     },
     {
       id: 'softSkills',
       title: t('softSkills'),
-      color: 'text-accent-light',
-      skills: ['Liderazgo', 'Trabajo en Equipo', 'Comunicación', 'Gestión de Proyectos', 'Resolución de Problemas', 'Adaptabilidad', 'Mentoría']
+      color: 'text-red-500',
+      skills: ['MySQL', 'PostgreSQL', 'DynamoDB', 'MongoDB']
     }
   ];
 
@@ -57,7 +57,7 @@ const Skills: React.FC = () => {
     <section className="mb-12" id="skills">
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">{t('skills')}</h2>
-        <p className={`text-gray-600 max-w-3xl ${isDarkMode ? 'text-gray-400' : ''}`}>
+        <p className="text-muted-foreground max-w-3xl">
           {t('skillsDesc')}
         </p>
       </div>
@@ -66,9 +66,7 @@ const Skills: React.FC = () => {
         {skillCategories.map((category) => (
           <Card 
             key={category.id}
-            className={`hover:shadow-lg transition-shadow duration-200 ${
-              isDarkMode ? 'bg-gray-800' : 'bg-white'
-            }`}
+            className="hover:shadow-lg transition-shadow duration-200"
           >
             <CardContent className="p-6">
               <h3 className={`text-xl font-semibold mb-4 ${category.color}`}>{category.title}</h3>
@@ -76,9 +74,7 @@ const Skills: React.FC = () => {
                 {category.skills.map((skill, index) => (
                   <span 
                     key={`${category.id}-${index}`}
-                    className={`px-3 py-1 ${
-                      isDarkMode ? 'bg-gray-700' : 'bg-gray-100'
-                    } rounded-full text-sm font-medium`}
+                    className="px-3 py-1 bg-muted rounded-full text-sm font-medium"
                   >
                     {skill}
                   </span>
