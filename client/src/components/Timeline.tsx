@@ -289,7 +289,10 @@ const Timeline: React.FC = () => {
                         )}
                       </h3>
                       
-                      <div className="flex flex-row-reverse items-start gap-3 mt-1">
+                      <div className="flex items-start gap-3 mt-1">
+                        <p className="text-muted-foreground">
+                          {node.professional.description}
+                        </p>
                         {node.professional.image && (
                           <div className="flex justify-end ml-3 shrink-0">
                             {node.professional.image.link ? (
@@ -319,9 +322,6 @@ const Timeline: React.FC = () => {
                             )}
                           </div>
                         )}
-                        <p className="text-muted-foreground">
-                          {node.professional.description}
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -376,9 +376,9 @@ const Timeline: React.FC = () => {
                         )}
                       </h3>
                       
-                      <div className="flex items-start gap-3 mt-1">
+                      <div className="flex flex-row-reverse items-start gap-3 mt-1">
                         {node.personal.image && (
-                          <div className="flex shrink-0 mt-1">
+                          <div className="flex shrink-0 mt-1 ml-3">
                             {node.personal.image.link ? (
                               <a 
                                 href={node.personal.image.link} 
