@@ -139,12 +139,21 @@ const Projects: React.FC = () => {
       }
     };
     
+    // Handle the custom tab switch event from Timeline
+    const handleTabSwitch = (event: CustomEvent) => {
+      if (event.detail && event.detail.tab) {
+        setActiveTab(event.detail.tab);
+      }
+    };
+    
     // Check on mount and when hash changes
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
+    document.addEventListener('switch-projects-tab', handleTabSwitch as EventListener);
     
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
+      document.removeEventListener('switch-projects-tab', handleTabSwitch as EventListener);
     };
   }, [projects]);
 

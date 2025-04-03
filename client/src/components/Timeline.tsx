@@ -59,10 +59,10 @@ const Timeline: React.FC = () => {
       id: '2020',
       year: '2020',
       professional: {
-        title: "MainRail - Inicio del proyecto",
-        description: "Comencé en MainRail realizando pruebas unitarias con Selenium, trabajando con PHP como backend y Polymer 2 como frontend, enfocado en el mantenimiento de ferrocarriles.",
+        title: "Carnet Joven Islas Baleares",
+        description: "Desarrollo completo de plataforma de usuario con Java 8 (Spring, Hibernate, JPA) y Angular 7, integrando servicios AWS como S3, SES, API Gateway y Lambda.",
         active: true,
-        link: "#project-mainrail"
+        link: "#project-carnetjoven"
       },
       personal: {
         title: "Profundización en AWS",
@@ -75,10 +75,10 @@ const Timeline: React.FC = () => {
       id: '2021',
       year: '2021',
       professional: {
-        title: "Carnet Joven Islas Baleares",
-        description: "Desarrollo completo de plataforma de usuario con Java 8 (Spring, Hibernate, JPA) y Angular 7, integrando servicios AWS como S3, SES, API Gateway y Lambda.",
+        title: "MainRail",
+        description: "Comencé en MainRail realizando pruebas unitarias con Selenium, trabajando con PHP como backend y Polymer 2 como frontend, enfocado en el mantenimiento de ferrocarriles.",
         active: true,
-        link: "#project-carnetjoven"
+        link: "#project-mainrail"
       },
       personal: {
         title: "Yeezy Scrapper",
@@ -146,10 +146,16 @@ const Timeline: React.FC = () => {
       },
       personal: {
         title: "Vibe Coding y IA",
-        description: "Inicio del vibe coding, uso de herramientas de IA como Cursor, Windsurf, Claude y Ollama para mejorar el desarrollo y la productividad.",
+        description: "Descubrimiento y dominio del vibe coding, utilizando herramientas de IA avanzadas como Cursor, Windsurf, Claude y Ollama para revolucionar mi flujo de desarrollo y aumentar la productividad de manera exponencial.",
         active: true,
+        image: {
+          url: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          alt: "AI Tools for Development",
+          width: 80,
+          height: 80
+        },
       },
-      nodeType: 'primary',
+      nodeType: 'accent',
     },
     {
       id: '2025',
@@ -232,8 +238,59 @@ const Timeline: React.FC = () => {
         : (profLink || persLink);
       
       if (linkToUse && linkToUse.startsWith('#')) {
+        // Get project ID from the link
+        const projectId = linkToUse.substring(linkToUse.indexOf('-') + 1);
+        
+        // Determine which tab (personal or professional) this project belongs to
+        // First check if the link contains explicit indicators
+        let tabToActivate = '';
+        
+        // Check if link explicitly indicates tab
+        if (linkToUse.includes('#project-')) {
+          // These are manual mappings based on project IDs in the links
+          const isPersonalProject = 
+            projectId === 'yeezy' || 
+            projectId === 'lolimprove' || 
+            projectId === 'gym' || 
+            projectId === 'aws' ||  // AWS certification is personal
+            projectId === 'selenium';
+          
+          const isProfessionalProject = 
+            projectId === 'mainrail' || 
+            projectId === 'clun' || 
+            projectId === 'carnet-joven' || 
+            projectId === 'morabanc';
+            
+          if (isPersonalProject) {
+            tabToActivate = 'personal';
+          } else if (isProfessionalProject) {
+            tabToActivate = 'professional';
+          } else {
+            // If no specific match, use the active section of the timeline node
+            tabToActivate = node.professional.active ? 'professional' : 'personal';
+          }
+        } else {
+          // Default fallback based on which link was used
+          tabToActivate = (linkToUse === persLink) ? 'personal' : 'professional';
+        }
+        
+        // Dispatch a custom event to change the tab
+        document.dispatchEvent(new CustomEvent('switch-projects-tab', { 
+          detail: { tab: tabToActivate }
+        }));
+        
         // Set location hash which will trigger Projects component's hash change handler
-        window.location.hash = linkToUse.substring(1);
+        setTimeout(() => {
+          window.location.hash = linkToUse.substring(1);
+          
+          // Ensure the project element is scrolled into view
+          setTimeout(() => {
+            const targetElement = document.getElementById(linkToUse.substring(1));
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }, 50);
       }
     }
   };
@@ -362,10 +419,7 @@ const Timeline: React.FC = () => {
                             onClick={(e) => {
                               if (node.personal.link?.startsWith('#')) {
                                 e.preventDefault();
-                                const element = document.querySelector(node.personal.link);
-                                if (element) {
-                                  element.scrollIntoView({ behavior: 'smooth' });
-                                }
+                                handleNodeClick(node.id, node);
                               }
                             }}
                           >
@@ -394,6 +448,23 @@ const Timeline: React.FC = () => {
                                   height={node.personal.image.height || 100}
                                 />
                                 <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground" />
+                              </a>
+                            ) : node.personal.link ? (
+                              <a 
+                                href={node.personal.link}
+                                className="inline-flex items-center cursor-pointer"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleNodeClick(node.id, node);
+                                }}
+                              >
+                                <img 
+                                  src={node.personal.image.url} 
+                                  alt={node.personal.image.alt}
+                                  className="rounded-md shadow-md transition-transform hover:scale-105 ring-2 ring-transparent hover:ring-primary"
+                                  width={node.personal.image.width || 100}
+                                  height={node.personal.image.height || 100}
+                                />
                               </a>
                             ) : (
                               <img 
