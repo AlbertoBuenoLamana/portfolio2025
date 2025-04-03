@@ -213,7 +213,7 @@ export const translations: Record<Language, TranslationKeys> = {
     persMot1: 'Completar proyectos personales como Gym App y LolImprove.',
     persMot2: 'Continuar explorando la integración de LLMs con desarrollo.',
     persMot3: 'Optimizar flujos de trabajo con automatización y AI coding.',
-    persMot4: 'Desarrollar mi propia startup tecnológica, aplicando todo el conocimiento adquirido durante mi carrera.',
+    persMot4: 'Especializarme en Vibe Coding, integrando desarrollo con IA y automatización para mejorar procesos.',
     
     // Footer
     copyright: '© 2024 Alberto Bueno Lamana'
@@ -321,7 +321,7 @@ export const translations: Record<Language, TranslationKeys> = {
     persMot1: 'Complete personal projects like Gym App and LolImprove.',
     persMot2: 'Continue exploring LLM integration with development.',
     persMot3: 'Optimize workflows with automation and AI coding.',
-    persMot4: 'Develop my own tech startup, applying all the knowledge acquired throughout my career.',
+    persMot4: 'Specialize in Vibe Coding, integrating AI development and automation to improve processes.',
     
     // Footer
     copyright: '© 2024 Alberto Bueno Lamana'
