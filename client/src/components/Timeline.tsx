@@ -198,6 +198,7 @@ const Timeline: React.FC = () => {
   ];
 
   const getNodeColor = (type: string) => {
+    // All nodes use the primary color scheme for consistent styling
     const colors = {
       primary: {
         bg: 'bg-primary/10 text-primary',
@@ -205,19 +206,19 @@ const Timeline: React.FC = () => {
         badge: 'bg-primary/10 text-primary',
       },
       secondary: {
-        bg: 'bg-secondary/20 text-secondary',
-        node: 'bg-secondary text-secondary-foreground',
-        badge: 'bg-secondary/20 text-secondary',
+        bg: 'bg-primary/10 text-primary',
+        node: 'bg-primary text-primary-foreground',
+        badge: 'bg-primary/10 text-primary',
       },
       accent: {
-        bg: 'bg-accent/20 text-accent',
-        node: 'bg-accent text-accent-foreground',
-        badge: 'bg-accent/20 text-accent',
+        bg: 'bg-primary/10 text-primary',
+        node: 'bg-primary text-primary-foreground',
+        badge: 'bg-primary/10 text-primary',
       },
       future: {
-        bg: 'bg-card text-card-foreground',
-        node: 'bg-gradient-to-r from-primary to-secondary text-primary-foreground',
-        badge: 'bg-card text-card-foreground',
+        bg: 'bg-primary/10 text-primary',
+        node: 'bg-primary text-primary-foreground',
+        badge: 'bg-primary/10 text-primary',
       }
     };
     
@@ -387,9 +388,7 @@ const Timeline: React.FC = () => {
                   <div className="md:absolute md:left-1/2 flex flex-col items-center transform md:-translate-x-1/2 z-10">
                     <button 
                       onClick={() => handleNodeClick(node.id, node)}
-                      className={`${
-                        node.id === 'future' ? 'w-10 h-10' : 'w-10 h-10'
-                      } rounded-full ${colorScheme.node} flex items-center justify-center font-medium shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110 ${
+                      className={`w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110 ${
                         activeNode === node.id ? 'ring-4 ring-primary ring-opacity-50' : ''
                       }`}
                     >
