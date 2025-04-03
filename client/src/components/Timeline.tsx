@@ -28,7 +28,7 @@ const Timeline: React.FC = () => {
   const timelineNodes: TimelineNode[] = [
     {
       id: '2019',
-      year: '19',
+      year: '2019',
       professional: {
         title: t('node2019Prof'),
         description: t('node2019ProfDesc'),
@@ -43,7 +43,7 @@ const Timeline: React.FC = () => {
     },
     {
       id: '2020',
-      year: '20',
+      year: '2020',
       professional: {
         title: t('node2020Prof'),
         description: t('node2020ProfDesc'),
@@ -58,7 +58,7 @@ const Timeline: React.FC = () => {
     },
     {
       id: '2021',
-      year: '21',
+      year: '2021',
       professional: {
         title: t('node2021Prof'),
         description: t('node2021ProfDesc'),
@@ -73,7 +73,7 @@ const Timeline: React.FC = () => {
     },
     {
       id: '2022',
-      year: '22',
+      year: '2022',
       professional: {
         title: t('node2022Prof'),
         description: t('node2022ProfDesc'),
@@ -88,7 +88,7 @@ const Timeline: React.FC = () => {
     },
     {
       id: '2023',
-      year: '23',
+      year: '2023',
       professional: {
         title: t('node2023Prof'),
         description: t('node2023ProfDesc'),
@@ -103,7 +103,7 @@ const Timeline: React.FC = () => {
     },
     {
       id: '2024',
-      year: '24',
+      year: '2024',
       professional: {
         title: t('node2024Prof'),
         description: t('node2024ProfDesc'),
@@ -118,7 +118,7 @@ const Timeline: React.FC = () => {
     },
     {
       id: '2025',
-      year: '25',
+      year: '2025',
       professional: {
         title: t('node2025Prof'),
         description: t('node2025ProfDesc'),
@@ -213,12 +213,10 @@ const Timeline: React.FC = () => {
                 key={node.id}
                 className="mb-12"
               >
-                <div className={`flex flex-col md:flex-row items-start ${
-                  activeNode === node.id ? 'opacity-100' : 'opacity-80 hover:opacity-100'
-                }`}>
+                <div className="flex flex-col md:flex-row items-start">
                   {/* Left Side (Professional) - Visible only on md+ */}
                   <div className="hidden md:block w-1/2 pr-8 text-right">
-                    <div className={`mb-2 pb-8 ${node.professional.active ? 'opacity-100' : 'opacity-50'}`}>
+                    <div className="mb-2 pb-8">
                       <Badge 
                         variant="outline"
                         className={`${colorScheme.bg}`}
@@ -237,7 +235,7 @@ const Timeline: React.FC = () => {
                     <button 
                       onClick={() => handleNodeClick(node.id)}
                       className={`${
-                        node.id === 'future' ? 'w-10 h-10' : 'w-8 h-8'
+                        node.id === 'future' ? 'w-10 h-10' : 'w-10 h-10'
                       } rounded-full ${colorScheme.node} flex items-center justify-center font-medium shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110 ${
                         activeNode === node.id ? `ring-4 ring-${node.nodeType === 'future' ? 'purple-500' : node.nodeType} ring-opacity-50` : ''
                       }`}
@@ -245,19 +243,19 @@ const Timeline: React.FC = () => {
                       {node.id === 'future' ? (
                         <Zap className="h-6 w-6" />
                       ) : (
-                        <span>{node.year}</span>
+                        <span className="text-[10px] font-bold">{node.year}</span>
                       )}
                     </button>
                     <div className={`h-16 w-1 ${
                       node.nodeType === 'primary' ? 'bg-primary' : 
                       node.nodeType === 'secondary' ? 'bg-secondary' : 
                       'bg-accent'
-                    } opacity-90 mt-1 shadow-sm rounded-full`}></div>
+                    } mt-1 shadow-sm rounded-full`}></div>
                   </div>
                   
                   {/* Right Side (Personal) */}
                   <div className="pl-10 md:pl-8 md:w-1/2 mt-2 md:mt-0">
-                    <div className={`mb-2 pb-8 ${node.personal.active ? 'opacity-100' : 'opacity-50'}`}>
+                    <div className="mb-2 pb-8">
                       <Badge 
                         variant="outline"
                         className={`${
