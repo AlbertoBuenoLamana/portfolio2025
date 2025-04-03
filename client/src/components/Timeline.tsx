@@ -398,7 +398,6 @@ const Timeline: React.FC = () => {
                         <span className="text-[10px] font-bold text-primary-foreground">{node.year}</span>
                       )}
                     </button>
-                    <div className="h-16 w-1 bg-primary mt-1 shadow-sm"></div>
                   </div>
                   
                   {/* Right Side (Personal) */}
