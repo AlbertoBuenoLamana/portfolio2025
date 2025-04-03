@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Badge } from '@/components/ui/badge';
-import { Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ExternalLink, Zap } from 'lucide-react';
+
+type TimelineImage = {
+  url: string;
+  alt: string;
+  link?: string;
+  width?: number;
+  height?: number;
+};
 
 type TimelineNode = {
   id: string;
@@ -11,11 +20,13 @@ type TimelineNode = {
     title: string;
     description: string;
     active: boolean;
+    image?: TimelineImage;
   };
   personal: {
     title: string;
     description: string;
     active: boolean;
+    image?: TimelineImage;
   };
   nodeType: 'primary' | 'secondary' | 'accent' | 'future';
 };
@@ -30,13 +41,13 @@ const Timeline: React.FC = () => {
       id: '2019',
       year: '2019',
       professional: {
-        title: t('node2019Prof'),
-        description: t('node2019ProfDesc'),
+        title: "Desarrollador Full Stack Senior en Inycom",
+        description: "Comencé a trabajar como desarrollador Full Stack Senior en Inycom, enfocándome en proyectos web con TypeScript/Angular y Java.",
         active: true,
       },
       personal: {
-        title: t('node2019Pers'),
-        description: t('node2019PersDesc'),
+        title: "Selenium FIFA",
+        description: "Creación de un proyecto con Java y Selenium que automatizaba la compra y venta de jugadores en FIFA para obtener beneficios con la moneda virtual del juego.",
         active: true,
       },
       nodeType: 'primary',
@@ -45,14 +56,14 @@ const Timeline: React.FC = () => {
       id: '2020',
       year: '2020',
       professional: {
-        title: t('node2020Prof'),
-        description: t('node2020ProfDesc'),
+        title: "MainRail - Inicio del proyecto",
+        description: "Comencé en MainRail realizando pruebas unitarias con Selenium, trabajando con PHP como backend y Polymer 2 como frontend, enfocado en el mantenimiento de ferrocarriles.",
         active: true,
       },
       personal: {
-        title: t('node2020Pers'),
-        description: t('node2020PersDesc'),
-        active: false,
+        title: "Profundización en AWS",
+        description: "Estudio y práctica con servicios de AWS como Lambda, EC2, RDS y S3 para mejorar mi comprensión de servicios cloud.",
+        active: true,
       },
       nodeType: 'primary',
     },
@@ -60,14 +71,20 @@ const Timeline: React.FC = () => {
       id: '2021',
       year: '2021',
       professional: {
-        title: t('node2021Prof'),
-        description: t('node2021ProfDesc'),
+        title: "Carnet Joven Islas Baleares",
+        description: "Desarrollo completo de plataforma de usuario con Java 8 (Spring, Hibernate, JPA) y Angular 7, integrando servicios AWS como S3, SES, API Gateway y Lambda.",
         active: true,
       },
       personal: {
-        title: t('node2021Pers'),
-        description: t('node2021PersDesc'),
+        title: "Yeezy Scrapper",
+        description: "Creación de un script de Python que verificaba precios de zapatillas en StockX usando AWS SAM.",
         active: true,
+        image: {
+          url: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          alt: "Yeezy Scrapper Project",
+          width: 150,
+          height: 100
+        }
       },
       nodeType: 'primary',
     },
@@ -75,13 +92,13 @@ const Timeline: React.FC = () => {
       id: '2022',
       year: '2022',
       professional: {
-        title: t('node2022Prof'),
-        description: t('node2022ProfDesc'),
-        active: false,
+        title: "MainRail - Migración y mejoras",
+        description: "Migración de MainRail de Polymer 3 a Angular 11 y Lumen, optimización de consultas PostgreSQL y despliegue en AWS EC2 y RDS.",
+        active: true,
       },
       personal: {
-        title: t('node2022Pers'),
-        description: t('node2022PersDesc'),
+        title: "Gym App - Inicio del desarrollo",
+        description: "Comienzo del desarrollo de una aplicación web full-stack para gestión de gimnasios con Angular y Spring Boot.",
         active: true,
       },
       nodeType: 'primary',
@@ -90,14 +107,21 @@ const Timeline: React.FC = () => {
       id: '2023',
       year: '2023',
       professional: {
-        title: t('node2023Prof'),
-        description: t('node2023ProfDesc'),
+        title: "Morabanc y Certificación AWS",
+        description: "Proyecto bancario en Angular 13 migrando desde AngularJS, optimizando el rendimiento. Obtención de la certificación AWS Certified Developer – Associate.",
         active: true,
+        image: {
+          url: "https://images.credly.com/size/680x680/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png",
+          alt: "AWS Certified Developer Associate Badge",
+          link: "https://www.credly.com/badges/6b6535e9-8cdb-4c79-b445-c48ee300aa15/linked_in?t=s5p476",
+          width: 120,
+          height: 120
+        }
       },
       personal: {
-        title: t('node2023Pers'),
-        description: t('node2023PersDesc'),
-        active: false,
+        title: "Gym App - Desarrollo continuo",
+        description: "Continuación del desarrollo de Gym App, implementando funcionalidades de seguimiento de progreso y gestión de rutinas.",
+        active: true,
       },
       nodeType: 'primary',
     },
@@ -105,13 +129,13 @@ const Timeline: React.FC = () => {
       id: '2024',
       year: '2024',
       professional: {
-        title: t('node2024Prof'),
-        description: t('node2024ProfDesc'),
+        title: "CLUN - API con Spring Boot 3",
+        description: "Desarrollo desde cero de API con Spring Boot 3 y Java 21, con integraciones múltiples y documentación completa con Swagger.",
         active: true,
       },
       personal: {
-        title: t('node2024Pers'),
-        description: t('node2024PersDesc'),
+        title: "Vibe Coding y IA",
+        description: "Inicio del vibe coding, uso de herramientas de IA como Cursor, Windsurf, Claude y Ollama para mejorar el desarrollo y la productividad.",
         active: true,
       },
       nodeType: 'primary',
@@ -120,14 +144,20 @@ const Timeline: React.FC = () => {
       id: '2025',
       year: '2025',
       professional: {
-        title: t('node2025Prof'),
-        description: t('node2025ProfDesc'),
-        active: false,
+        title: "Continuación de CLUN",
+        description: "Mantenimiento y mejoras de la API de CLUN, añadiendo nuevas funcionalidades e integraciones.",
+        active: true,
       },
       personal: {
-        title: t('node2025Pers'),
-        description: t('node2025PersDesc'),
+        title: "LolImprove y finalización de Gym App",
+        description: "Desarrollo de LolImprove, aplicación para mejorar en League of Legends, y finalización de la aplicación Gym App.",
         active: true,
+        image: {
+          url: "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          alt: "LolImprove Project",
+          width: 150,
+          height: 100
+        }
       },
       nodeType: 'accent',
     },
@@ -135,13 +165,13 @@ const Timeline: React.FC = () => {
       id: 'future',
       year: '',
       professional: {
-        title: t('nodeFutureProf'),
-        description: t('nodeFutureProfDesc'),
+        title: "Arquitecto de Software",
+        description: "Evolucionar al rol de arquitectura de software, liderando decisiones técnicas y diseñando soluciones escalables.",
         active: true,
       },
       personal: {
-        title: t('nodeFutureMot'),
-        description: t('nodeFutureMotDesc'),
+        title: "Startup Propia",
+        description: "Desarrollar mi propia startup tecnológica, aplicando todo el conocimiento adquirido durante mi carrera.",
         active: true,
       },
       nodeType: 'future',
@@ -217,6 +247,35 @@ const Timeline: React.FC = () => {
                       <p className="text-muted-foreground mt-1">
                         {node.professional.description}
                       </p>
+                      {node.professional.image && (
+                        <div className="mt-3 flex justify-end">
+                          {node.professional.image.link ? (
+                            <a 
+                              href={node.professional.image.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center"
+                            >
+                              <img 
+                                src={node.professional.image.url} 
+                                alt={node.professional.image.alt}
+                                className="rounded-md shadow-md transition-transform hover:scale-105"
+                                width={node.professional.image.width || 100}
+                                height={node.professional.image.height || 100}
+                              />
+                              <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground" />
+                            </a>
+                          ) : (
+                            <img 
+                              src={node.professional.image.url} 
+                              alt={node.professional.image.alt}
+                              className="rounded-md shadow-md"
+                              width={node.professional.image.width || 100}
+                              height={node.professional.image.height || 100}
+                            />
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                   
@@ -252,6 +311,35 @@ const Timeline: React.FC = () => {
                       <p className="text-muted-foreground mt-1">
                         {node.personal.description}
                       </p>
+                      {node.personal.image && (
+                        <div className="mt-3">
+                          {node.personal.image.link ? (
+                            <a 
+                              href={node.personal.image.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center"
+                            >
+                              <img 
+                                src={node.personal.image.url} 
+                                alt={node.personal.image.alt}
+                                className="rounded-md shadow-md transition-transform hover:scale-105"
+                                width={node.personal.image.width || 100}
+                                height={node.personal.image.height || 100}
+                              />
+                              <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground" />
+                            </a>
+                          ) : (
+                            <img 
+                              src={node.personal.image.url} 
+                              alt={node.personal.image.alt}
+                              className="rounded-md shadow-md"
+                              width={node.personal.image.width || 100}
+                              height={node.personal.image.height || 100}
+                            />
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
