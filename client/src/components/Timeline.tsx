@@ -148,27 +148,27 @@ const Timeline: React.FC = () => {
     },
   ];
 
-  const getNodeColor = (type: string, isDark: boolean) => {
+  const getNodeColor = (type: string) => {
     const colors = {
       primary: {
-        bg: isDark ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800',
-        node: 'bg-primary text-white',
-        badge: 'bg-blue-100 text-blue-800',
+        bg: 'bg-primary/10 text-primary',
+        node: 'bg-primary text-primary-foreground',
+        badge: 'bg-primary/10 text-primary',
       },
       secondary: {
-        bg: isDark ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800',
-        node: 'bg-primary text-white',
-        badge: 'bg-green-100 text-green-800',
+        bg: 'bg-secondary text-secondary-foreground',
+        node: 'bg-secondary text-secondary-foreground',
+        badge: 'bg-secondary text-secondary-foreground',
       },
       accent: {
-        bg: isDark ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800',
-        node: 'bg-primary text-white',
-        badge: 'bg-purple-100 text-purple-800',
+        bg: 'bg-accent text-accent-foreground',
+        node: 'bg-accent text-accent-foreground',
+        badge: 'bg-accent text-accent-foreground',
       },
       future: {
-        bg: isDark ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800',
-        node: 'bg-gradient-to-r from-primary to-accent text-white',
-        badge: 'bg-purple-100 text-purple-800',
+        bg: 'bg-muted text-muted-foreground',
+        node: 'bg-gradient-to-r from-primary to-accent text-primary-foreground',
+        badge: 'bg-muted text-muted-foreground',
       }
     };
     
@@ -196,7 +196,7 @@ const Timeline: React.FC = () => {
         <div className="relative">
           {/* Timeline Nodes */}
           {timelineNodes.map((node) => {
-            const colorScheme = getNodeColor(node.nodeType, isDarkMode);
+            const colorScheme = getNodeColor(node.nodeType);
             
             return (
               <div 
