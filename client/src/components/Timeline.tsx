@@ -114,7 +114,7 @@ const Timeline: React.FC = () => {
         description: t('node2024PersDesc'),
         active: true,
       },
-      nodeType: 'secondary',
+      nodeType: 'primary',
     },
     {
       id: '2025',
@@ -149,38 +149,30 @@ const Timeline: React.FC = () => {
   ];
 
   const getNodeColor = (type: string, isDark: boolean) => {
-    switch (type) {
-      case 'primary':
-        return {
-          bg: isDark ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800',
-          node: 'bg-primary text-white',
-          badge: 'bg-blue-100 text-blue-800',
-        };
-      case 'secondary':
-        return {
-          bg: isDark ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800',
-          node: 'bg-secondary text-white',
-          badge: 'bg-green-100 text-green-800',
-        };
-      case 'accent':
-        return {
-          bg: isDark ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800',
-          node: 'bg-accent text-white',
-          badge: 'bg-purple-100 text-purple-800',
-        };
-      case 'future':
-        return {
-          bg: isDark ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800',
-          node: 'bg-gradient-to-r from-primary to-accent text-white',
-          badge: 'bg-purple-100 text-purple-800',
-        };
-      default:
-        return {
-          bg: isDark ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800',
-          node: 'bg-primary text-white',
-          badge: 'bg-blue-100 text-blue-800',
-        };
-    }
+    const colors = {
+      primary: {
+        bg: isDark ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800',
+        node: 'bg-primary text-white',
+        badge: 'bg-blue-100 text-blue-800',
+      },
+      secondary: {
+        bg: isDark ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800',
+        node: 'bg-primary text-white',
+        badge: 'bg-green-100 text-green-800',
+      },
+      accent: {
+        bg: isDark ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800',
+        node: 'bg-primary text-white',
+        badge: 'bg-purple-100 text-purple-800',
+      },
+      future: {
+        bg: isDark ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800',
+        node: 'bg-gradient-to-r from-primary to-accent text-white',
+        badge: 'bg-purple-100 text-purple-800',
+      }
+    };
+    
+    return colors[type as keyof typeof colors] || colors.primary;
   };
 
   const handleNodeClick = (id: string) => {
@@ -237,7 +229,7 @@ const Timeline: React.FC = () => {
                       className={`${
                         node.id === 'future' ? 'w-10 h-10' : 'w-10 h-10'
                       } rounded-full ${colorScheme.node} flex items-center justify-center font-medium shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110 ${
-                        activeNode === node.id ? `ring-4 ring-${node.nodeType === 'future' ? 'purple-500' : node.nodeType} ring-opacity-50` : ''
+                        activeNode === node.id ? 'ring-4 ring-primary ring-opacity-50' : ''
                       }`}
                     >
                       {node.id === 'future' ? (
@@ -246,11 +238,7 @@ const Timeline: React.FC = () => {
                         <span className="text-[10px] font-bold">{node.year}</span>
                       )}
                     </button>
-                    <div className={`h-16 w-1 ${
-                      node.nodeType === 'primary' ? 'bg-primary' : 
-                      node.nodeType === 'secondary' ? 'bg-secondary' : 
-                      'bg-accent'
-                    } mt-1 shadow-sm rounded-full`}></div>
+                    <div className="h-16 w-1 bg-primary mt-1 shadow-sm rounded-full"></div>
                   </div>
                   
                   {/* Right Side (Personal) */}
