@@ -44,7 +44,7 @@ const Goals: React.FC = () => {
     <section className="mb-12" id="goals">
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">{t('goalsSection')}</h2>
-        <p className="text-muted-foreground max-w-3xl">
+        <p className="max-w-3xl">
           {t('goalsDesc')}
         </p>
       </div>
@@ -54,7 +54,7 @@ const Goals: React.FC = () => {
         <Card className="hover:shadow-lg transition-shadow duration-200 border-l-4 border-primary">
           <CardContent className="p-6">
             <h3 className="text-xl font-semibold mb-4 text-primary">{t('profGoals')}</h3>
-            <ul className="space-y-3 text-muted-foreground">
+            <ul className="space-y-3">
               {professionalGoals.map((goal, index) => (
                 <li key={`prof-goal-${index}`} className="flex items-start">
                   <CheckCircle2 className="h-6 w-6 text-primary mr-2 flex-shrink-0" />
@@ -69,7 +69,7 @@ const Goals: React.FC = () => {
         <Card className="hover:shadow-lg transition-shadow duration-200 border-l-4 border-secondary">
           <CardContent className="p-6">
             <h3 className="text-xl font-semibold mb-4 text-secondary">{t('persMotivations')}</h3>
-            <ul className="space-y-3 text-muted-foreground">
+            <ul className="space-y-3">
               {personalMotivations.map((motivation, index) => (
                 <li key={`pers-mot-${index}`} className="flex items-start">
                   <Zap className="h-6 w-6 text-secondary mr-2 flex-shrink-0" />
@@ -84,7 +84,7 @@ const Goals: React.FC = () => {
         <Card className="hover:shadow-lg transition-shadow duration-200 border-l-4 border-accent col-span-1 md:col-span-2">
           <CardContent className="p-6">
             <h3 className="text-xl font-semibold mb-4 text-accent">{t('currentTech')}</h3>
-            <p className="text-muted-foreground mb-4">
+            <p className="mb-4">
               {t('currentTechDesc')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -94,7 +94,7 @@ const Goals: React.FC = () => {
                   className="bg-card p-4 rounded-lg border border-border"
                 >
                   <h4 className="font-medium mb-2">{area.title}</h4>
-                  <p className="text-sm text-muted-foreground">{area.description}</p>
+                  <p className="text-sm">{area.description}</p>
                 </div>
               ))}
             </div>
