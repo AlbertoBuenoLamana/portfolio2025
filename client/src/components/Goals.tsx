@@ -81,9 +81,9 @@ const Goals: React.FC = () => {
         </Card>
         
         {/* Current Technologies */}
-        <Card className="hover:shadow-lg transition-shadow duration-200 border-l-4 border-accent col-span-1 md:col-span-2">
+        <Card className="hover:shadow-lg transition-shadow duration-200 border-l-4 border-primary col-span-1 md:col-span-2">
           <CardContent className="p-6">
-            <h3 className="text-xl font-semibold mb-4 text-accent">{t('currentTech')}</h3>
+            <h3 className="text-xl font-semibold mb-4 text-primary">{t('currentTech')}</h3>
             <p className="mb-4">
               {t('currentTechDesc')}
             </p>
@@ -93,7 +93,7 @@ const Goals: React.FC = () => {
                   key={area.id}
                   className="bg-card p-4 rounded-lg border border-border"
                 >
-                  <h4 className="font-medium mb-2">{area.title}</h4>
+                  <h4 className="font-medium mb-2 text-primary">{area.title}</h4>
                   <p className="text-sm">{area.description}</p>
                 </div>
               ))}
