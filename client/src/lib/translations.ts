@@ -197,7 +197,7 @@ export const translations: Record<Language, TranslationKeys> = {
     profGoals: 'Objetivos Profesionales',
     persMotivations: 'Motivaciones Personales',
     currentTech: 'Tecnologías Actuales',
-    currentTechDesc: 'En 2024 he iniciado mi viaje en Vibe Coding, utilizando herramientas de IA para desarrollo.',
+    currentTechDesc: 'En 2024 he iniciado mi viaje en Vibe Coding, utilizando herramientas de IA como Ollama, n8n para automatización de flujos de trabajo y diversas herramientas de codificación asistida por IA para mejorar mi productividad de desarrollo.',
     
     modernFrontend: 'Angular & TypeScript',
     backendCloud: 'Spring Boot & AWS',
@@ -206,14 +206,14 @@ export const translations: Record<Language, TranslationKeys> = {
     // Professional Goals List
     profGoal1: 'Expandir mi experiencia en servicios cloud de AWS.',
     profGoal2: 'Profundizar en arquitecturas de software escalables.',
-    profGoal3: 'Mejorar en el uso de herramientas de IA para desarrollo.',
+    profGoal3: 'Profundizar en el desarrollo de soluciones innovadoras con inteligencia artificial.',
     profGoal4: 'Implementar sistemas robustos con CI/CD y microservicios.',
     
     // Personal Motivations List
     persMot1: 'Completar proyectos personales como Gym App y LolImprove.',
     persMot2: 'Continuar explorando la integración de LLMs con desarrollo.',
     persMot3: 'Optimizar flujos de trabajo con automatización y AI coding.',
-    persMot4: 'Compartir conocimientos sobre Vibe Coding en la comunidad.',
+    persMot4: 'Desarrollar mi propia startup tecnológica, aplicando todo el conocimiento adquirido durante mi carrera.',
     
     // Footer
     copyright: '© 2024 Alberto Bueno Lamana'
@@ -305,7 +305,7 @@ export const translations: Record<Language, TranslationKeys> = {
     profGoals: 'Professional Goals',
     persMotivations: 'Personal Motivations',
     currentTech: 'Current Technologies',
-    currentTechDesc: 'In 2024 I started my Vibe Coding journey, using AI tools for development.',
+    currentTechDesc: 'In 2024 I started my Vibe Coding journey, using AI tools like Ollama, n8n for workflow automation, and various AI-assisted coding tools to enhance my development productivity.',
     
     modernFrontend: 'Angular & TypeScript',
     backendCloud: 'Spring Boot & AWS',
@@ -314,14 +314,14 @@ export const translations: Record<Language, TranslationKeys> = {
     // Professional Goals List
     profGoal1: 'Expand my experience with AWS cloud services.',
     profGoal2: 'Deepen knowledge in scalable software architectures.',
-    profGoal3: 'Improve use of AI tools for development.',
+    profGoal3: 'Develop innovative solutions with artificial intelligence.',
     profGoal4: 'Implement robust systems with CI/CD and microservices.',
     
     // Personal Motivations List
     persMot1: 'Complete personal projects like Gym App and LolImprove.',
     persMot2: 'Continue exploring LLM integration with development.',
     persMot3: 'Optimize workflows with automation and AI coding.',
-    persMot4: 'Share knowledge about Vibe Coding in the community.',
+    persMot4: 'Develop my own tech startup, applying all the knowledge acquired throughout my career.',
     
     // Footer
     copyright: '© 2024 Alberto Bueno Lamana'
