@@ -183,16 +183,14 @@ const Timeline: React.FC = () => {
     <section className="mb-12" id="timeline">
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">{t('timeline')}</h2>
-        <p className={`text-gray-600 max-w-3xl ${isDarkMode ? 'text-gray-400' : ''}`}>
+        <p className="text-muted-foreground max-w-3xl">
           {t('timelineDesc')}
         </p>
       </div>
       
       <div className="relative">
         {/* Main Timeline Line */}
-        <div className={`absolute left-0 md:left-1/2 top-0 bottom-0 w-1 ${
-          isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
-        } transform md:translate-x-px shadow-md rounded-full`}></div>
+        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-border transform md:translate-x-px shadow-md rounded-full"></div>
         
         {/* Timeline Container */}
         <div className="relative">
@@ -211,12 +209,12 @@ const Timeline: React.FC = () => {
                     <div className="mb-2 pb-8">
                       <Badge 
                         variant="outline"
-                        className={`${colorScheme.bg}`}
+                        className="font-medium"
                       >
                         {t('professional')}
                       </Badge>
                       <h3 className="text-lg font-medium mt-2">{node.professional.title}</h3>
-                      <p className={`text-gray-600 mt-1 ${isDarkMode ? 'text-gray-400' : ''}`}>
+                      <p className="text-muted-foreground mt-1">
                         {node.professional.description}
                       </p>
                     </div>
@@ -245,17 +243,13 @@ const Timeline: React.FC = () => {
                   <div className="pl-10 md:pl-8 md:w-1/2 mt-2 md:mt-0">
                     <div className="mb-2 pb-8">
                       <Badge 
-                        variant="outline"
-                        className={`${
-                          node.id === 'future' ? 
-                            (isDarkMode ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-800') : 
-                            (isDarkMode ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800')
-                        }`}
+                        variant="secondary"
+                        className="font-medium"
                       >
                         {node.id === 'future' ? t('motivation') : t('personal')}
                       </Badge>
                       <h3 className="text-lg font-medium mt-2">{node.personal.title}</h3>
-                      <p className={`text-gray-600 mt-1 ${isDarkMode ? 'text-gray-400' : ''}`}>
+                      <p className="text-muted-foreground mt-1">
                         {node.personal.description}
                       </p>
                     </div>

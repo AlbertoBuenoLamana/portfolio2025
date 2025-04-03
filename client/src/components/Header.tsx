@@ -9,9 +9,7 @@ const Header: React.FC = () => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <header className={`sticky top-0 z-50 transition-colors duration-200 ${
-      isDarkMode ? 'bg-gray-800' : 'bg-white'
-    } shadow-sm`}>
+    <header className="sticky top-0 z-50 transition-colors duration-200 bg-card shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
@@ -23,9 +21,6 @@ const Header: React.FC = () => {
               variant="outline"
               size="sm"
               onClick={toggleLanguage}
-              className={`${
-                isDarkMode ? 'border-gray-600 text-gray-300 hover:bg-gray-700' : ''
-              }`}
             >
               {language === 'es' ? 'EN' : 'ES'}
             </Button>
@@ -35,9 +30,6 @@ const Header: React.FC = () => {
               variant="outline"
               size="icon"
               onClick={toggleTheme}
-              className={`${
-                isDarkMode ? 'border-gray-600 text-gray-300 hover:bg-gray-700' : ''
-              }`}
             >
               {isDarkMode ? (
                 <SunIcon className="h-5 w-5" />
@@ -49,9 +41,7 @@ const Header: React.FC = () => {
             {/* Contact Button */}
             <Button 
               asChild
-              className={`${
-                isDarkMode ? 'bg-primary-dark hover:bg-primary' : ''
-              }`}
+              variant="default"
             >
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                 {t('contact')}
