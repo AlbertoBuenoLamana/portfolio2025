@@ -24,13 +24,13 @@ const Skills: React.FC = () => {
     {
       id: 'backend',
       title: t('backend'),
-      color: 'text-secondary',
+      color: 'text-emerald-600 dark:text-emerald-400',
       skills: ['Java 8/21', 'Spring Boot', 'Hibernate', 'JPA', 'Python', 'PHP', 'REST API', 'Maven']
     },
     {
       id: 'tools',
       title: t('tools'),
-      color: 'text-accent',
+      color: 'text-sky-600 dark:text-sky-400',
       skills: ['Git', 'Docker', 'Jira', 'Trello', 'Swagger', 'VS Code', 'Azure DevOps', 'AWS CodeBuild', 'AWS CodeDeploy']
     },
     {
