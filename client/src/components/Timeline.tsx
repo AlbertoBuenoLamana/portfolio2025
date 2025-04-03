@@ -198,9 +198,9 @@ const Timeline: React.FC = () => {
       
       <div className="relative">
         {/* Main Timeline Line */}
-        <div className={`absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 ${
-          isDarkMode ? 'bg-gray-700' : 'bg-gray-200'
-        } transform md:translate-x-px`}></div>
+        <div className={`absolute left-0 md:left-1/2 top-0 bottom-0 w-1 ${
+          isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
+        } transform md:translate-x-px shadow-md rounded-full`}></div>
         
         {/* Timeline Container */}
         <div className="relative">
@@ -248,11 +248,11 @@ const Timeline: React.FC = () => {
                         <span>{node.year}</span>
                       )}
                     </button>
-                    <div className={`h-16 w-0.5 ${
-                      node.nodeType === 'primary' ? 'bg-primary-light' : 
-                      node.nodeType === 'secondary' ? 'bg-secondary-light' : 
-                      'bg-accent-light'
-                    } opacity-50 mt-1`}></div>
+                    <div className={`h-16 w-1 ${
+                      node.nodeType === 'primary' ? 'bg-primary' : 
+                      node.nodeType === 'secondary' ? 'bg-secondary' : 
+                      'bg-accent'
+                    } opacity-90 mt-1 shadow-sm rounded-full`}></div>
                   </div>
                   
                   {/* Right Side (Personal) */}
