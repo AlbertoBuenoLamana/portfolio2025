@@ -396,7 +396,7 @@ const Timeline: React.FC = () => {
                       {node.id === 'future' ? (
                         <Zap className="h-6 w-6" />
                       ) : (
-                        <span className="text-[10px] font-bold">{node.year}</span>
+                        <span className="text-[10px] font-bold text-primary-foreground">{node.year}</span>
                       )}
                     </button>
                     <div className="h-16 w-1 bg-primary mt-1 shadow-sm"></div>

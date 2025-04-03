@@ -66,13 +66,13 @@ const Goals: React.FC = () => {
         </Card>
         
         {/* Personal Motivations */}
-        <Card className="hover:shadow-lg transition-shadow duration-200 border-l-4 border-secondary">
+        <Card className="hover:shadow-lg transition-shadow duration-200 border-l-4 border-primary">
           <CardContent className="p-6">
-            <h3 className="text-xl font-semibold mb-4 text-secondary">{t('persMotivations')}</h3>
+            <h3 className="text-xl font-semibold mb-4 text-primary">{t('persMotivations')}</h3>
             <ul className="space-y-3">
               {personalMotivations.map((motivation, index) => (
                 <li key={`pers-mot-${index}`} className="flex items-start">
-                  <Zap className="h-6 w-6 text-secondary mr-2 flex-shrink-0" />
+                  <Zap className="h-6 w-6 text-primary mr-2 flex-shrink-0" />
                   <span>{motivation}</span>
                 </li>
               ))}
