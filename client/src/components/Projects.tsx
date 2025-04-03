@@ -102,6 +102,52 @@ const Projects: React.FC = () => {
   const personalProjects = projects.filter(project => project.type === 'personal');
   const professionalProjects = projects.filter(project => project.type === 'professional');
 
+  // Helper function to sort projects from recent to old based on year
+  const sortProjectsByYear = (projects: Project[]) => {
+    return [...projects].sort((a, b) => {
+      if (!a.year || !b.year) return 0;
+      
+      // Extract ending year from ranges like "2022-2025"
+      const aYear = parseInt(a.year.split('-').pop() || a.year);
+      const bYear = parseInt(b.year.split('-').pop() || b.year);
+      
+      // Sort descending (recent first)
+      return bYear - aYear;
+    });
+  };
+
+  const sortedPersonalProjects = sortProjectsByYear(personalProjects);
+  const sortedProfessionalProjects = sortProjectsByYear(professionalProjects);
+  
+  // Handle hash change to switch to correct tab if needed
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#project-')) {
+        const projectId = hash.replace('#project-', '');
+        const project = projects.find(p => p.id === projectId);
+        
+        if (project) {
+          setActiveTab(project.type);
+          setTimeout(() => {
+            const element = document.getElementById(hash.substring(1));
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }
+    };
+    
+    // Check on mount and when hash changes
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [projects]);
+
   return (
     <section className="mb-12" id="projects">
       <div className="mb-8">
@@ -119,10 +165,11 @@ const Projects: React.FC = () => {
         
         <TabsContent value="personal" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {personalProjects.map((project) => (
+            {sortedPersonalProjects.map((project) => (
               <Card 
                 key={project.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow duration-200"
+                id={`project-${project.id}`}
+                className="overflow-hidden hover:shadow-lg transition-shadow duration-200 scroll-mt-24"
               >
                 <div className="h-48 bg-muted">
                   <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${project.image})` }}></div>
@@ -160,10 +207,11 @@ const Projects: React.FC = () => {
         
         <TabsContent value="professional" className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {professionalProjects.map((project) => (
+            {sortedProfessionalProjects.map((project) => (
               <Card 
                 key={project.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow duration-200"
+                id={`project-${project.id}`}
+                className="overflow-hidden hover:shadow-lg transition-shadow duration-200 scroll-mt-24"
               >
                 <div className="h-48 bg-muted">
                   <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${project.image})` }}></div>
