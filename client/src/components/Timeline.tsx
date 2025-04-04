@@ -85,7 +85,7 @@ const Timeline: React.FC = () => {
         description: "Creación de un script de Python que verificaba precios de zapatillas en StockX usando AWS SAM.",
         active: true,
         image: {
-          url: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          url: "/images/timeline-yeezyscrapper.png",
           alt: "Yeezy Scrapper Project",
           width: 80,
           height: 60
@@ -125,7 +125,7 @@ const Timeline: React.FC = () => {
         description: "Continuación del desarrollo de Gym App, implementando funcionalidades. Obtención de la certificación AWS Certified Developer – Associate.",
         active: true,
         image: {
-          url: "https://images.credly.com/size/680x680/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png",
+          url: "/images/timeline-aws-cert.png",
           alt: "AWS Certified Developer Associate Badge",
           link: "https://www.credly.com/badges/6b6535e9-8cdb-4c79-b445-c48ee300aa15/linked_in?t=s5p476",
           width: 80,
@@ -149,7 +149,7 @@ const Timeline: React.FC = () => {
         description: "Descubrimiento y dominio del vibe coding, utilizando herramientas de IA avanzadas como Cursor, Windsurf, Claude y Ollama para revolucionar mi flujo de desarrollo y aumentar la productividad de manera exponencial.",
         active: true,
         image: {
-          url: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          url: "/images/timeline-vibe-coding.png",
           alt: "AI Tools for Development",
           width: 80,
           height: 80
@@ -171,7 +171,7 @@ const Timeline: React.FC = () => {
         description: "Desarrollo de LolImprove, aplicación para mejorar en League of Legends, y finalización de la aplicación Gym App.",
         active: true,
         image: {
-          url: "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          url: "/images/timeline-lolimprove.png",
           alt: "LolImprove Project",
           width: 80,
           height: 60

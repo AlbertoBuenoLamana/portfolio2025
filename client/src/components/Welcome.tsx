@@ -12,7 +12,7 @@ const Welcome: React.FC = () => {
           <Card className="overflow-hidden w-64 h-64 relative shadow-lg border-2 border-primary/20 transition-all duration-300 hover:shadow-xl">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
             <div className="w-full h-full bg-cover bg-center rounded-md overflow-hidden" 
-                 style={{ backgroundImage: `url('https://placehold.co/400x400/f5f5f5/5d5d5d?text=Profile+Photo')` }}>
+                 style={{ backgroundImage: `url('/images/profile.jpg')` }}>
             </div>
           </Card>
         </div>
@@ -32,7 +32,7 @@ const Welcome: React.FC = () => {
               <span className="text-sm font-medium">Angular Specialist</span>
             </Card>
             <Card className="bg-primary/5 border-none px-4 py-2">
-              <span className="text-sm font-medium">Java Expert</span>
+              <span className="text-sm font-medium">Java Developer</span>
             </Card>
           </div>
         </div>
