@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Linkedin, Globe, Github } from 'lucide-react';
 
 type Project = {
   id: string;
@@ -12,6 +13,9 @@ type Project = {
   image: string;
   technologies: string[];
   year?: string;
+  url?: string; // URL para proyectos con enlace web
+  github?: string; // URL para proyectos con repositorio en GitHub
+  linkedin?: string; // URL para proyectos con perfil de LinkedIn
 };
 
 function Projects() {
@@ -27,7 +31,8 @@ function Projects() {
       type: 'personal',
       year: '2022-2025',
       image: '/images/project-gymapp.png',
-      technologies: ['Angular 19', 'Spring Boot', 'AWS', 'DynamoDB', 'CI/CD', 'JWT', 'Material Design']
+      technologies: ['Angular 19', 'Spring Boot', 'AWS', 'DynamoDB', 'CI/CD', 'JWT', 'Material Design'],
+      url: '#'
     },
     {
       id: 'lolimprove',
@@ -36,7 +41,8 @@ function Projects() {
       type: 'personal',
       year: '2025',
       image: '/images/project-lolimprove.png',
-      technologies: ['React', 'TypeScript', 'FastAPI', 'SQLAlchemy', 'Python']
+      technologies: ['React', 'TypeScript', 'FastAPI', 'SQLAlchemy', 'Python'],
+      url: '#'
     },
     {
       id: 'yeezyscrapper',
@@ -45,7 +51,8 @@ function Projects() {
       type: 'personal',
       year: '2021',
       image: '/images/project-yeezyscrapper.png',
-      technologies: ['Python', 'AWS SAM', 'Web Scraping']
+      technologies: ['Python', 'AWS SAM', 'Web Scraping'],
+      github: 'https://github.com/yourusername/yeezy-scrapper'
     },
     {
       id: 'seleniumfifa',
@@ -54,7 +61,8 @@ function Projects() {
       type: 'personal',
       year: '2019',
       image: '/images/project-seleniumfifa.png',
-      technologies: ['Java', 'Selenium', 'Automation']
+      technologies: ['Java', 'Selenium', 'Automation'],
+      github: 'https://github.com/yourusername/selenium-fifa'
     },
     
     // Professional Projects
@@ -65,7 +73,8 @@ function Projects() {
       type: 'professional',
       year: '2020-2023',
       image: '/images/project-mainrail.png',
-      technologies: ['PHP', 'Polymer 2/3', 'Angular 11', 'Lumen', 'PostgreSQL', 'AWS EC2', 'RDS', 'Selenium']
+      technologies: ['PHP', 'Polymer 2/3', 'Angular 11', 'Lumen', 'PostgreSQL', 'AWS EC2', 'RDS', 'Selenium'],
+      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
     },
     {
       id: 'morabanc',
@@ -74,7 +83,8 @@ function Projects() {
       type: 'professional',
       year: '2023-2024',
       image: '/images/project-morabanc.png',
-      technologies: ['Angular 13', 'TypeScript', 'AngularJS', 'Performance Optimization', 'Migration']
+      technologies: ['Angular 13', 'TypeScript', 'AngularJS', 'Performance Optimization', 'Migration'],
+      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
     },
     {
       id: 'carnetjoven',
@@ -83,7 +93,8 @@ function Projects() {
       type: 'professional',
       year: '2019-2021',
       image: '/images/project-carnetjoven.png',
-      technologies: ['Java 8', 'Spring', 'Hibernate', 'Angular 7', 'AWS', 'JasperReports', 'MySQL', 'Tomcat']
+      technologies: ['Java 8', 'Spring', 'Hibernate', 'Angular 7', 'AWS', 'JasperReports', 'MySQL', 'Tomcat'],
+      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
     },
     {
       id: 'clun',
@@ -92,7 +103,8 @@ function Projects() {
       type: 'professional',
       year: '2024-2025',
       image: '/images/project-clun.png',
-      technologies: ['Spring Boot 3', 'Java 21', 'REST API', 'Swagger', 'Integration']
+      technologies: ['Spring Boot 3', 'Java 21', 'REST API', 'Swagger', 'Integration'],
+      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
     }
   ];
 
@@ -155,122 +167,165 @@ function Projects() {
   }, [projects]);
 
   return (
-    <section className="mb-12 pt-4" id="projects">
-      <div className="mb-8">
-        <h2 className="section-title">{t('projects')}</h2>
-        <p className="text-muted-foreground dark:text-gray-300 max-w-3xl transition-colors duration-300">
-          {t('projectsDesc')}
-        </p>
-      </div>
+    <section className="mb-12 pt-4 relative" id="projects">
+      {/* Background blob effect */}
+      <div className="blob-effect w-80 h-80 opacity-20 right-[5%] top-[30%]"></div>
       
-      <Tabs defaultValue={activeTab} value={activeTab} className="w-full" onValueChange={setActiveTab}>
-        <TabsList className="mb-6 grid w-full grid-cols-2 max-w-md bg-muted dark:bg-gray-700 transition-colors duration-300">
-          <TabsTrigger 
-            value="personal" 
-            className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800 data-[state=active]:text-foreground dark:data-[state=active]:text-white transition-colors duration-300"
-          >
-            {t('personal')}
-          </TabsTrigger>
-          <TabsTrigger 
-            value="professional" 
-            className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800 data-[state=active]:text-foreground dark:data-[state=active]:text-white transition-colors duration-300"
-          >
-            {t('professional')}
-          </TabsTrigger>
-        </TabsList>
+      <div className="section-container">
+        <div className="mb-8 relative z-10">
+          <h2 className="section-title">{t('projects')}</h2>
+          <p className="text-muted-foreground dark:text-gray-300 transition-colors duration-300">
+            {t('projectsDesc')}
+          </p>
+        </div>
         
-        <TabsContent value="personal" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {sortedPersonalProjects.map((project) => (
-              <Card 
-                key={project.id}
-                id={`project-${project.id}`}
-                className="overflow-hidden card-hover dark:bg-gray-800 scroll-mt-24 flex flex-col"
-              >
-                <div className="mx-auto w-full max-w-[300px] pt-4">
-                  <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
-                    />
+        <Tabs defaultValue={activeTab} value={activeTab} className="w-full" onValueChange={setActiveTab}>
+          <TabsList className="mb-6 grid w-full grid-cols-2 max-w-md bg-muted dark:bg-gray-700 transition-colors duration-300 relative overflow-hidden">
+            <div className={`absolute bottom-0 h-0.5 bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-primary-foreground transition-all duration-300 ${activeTab === 'personal' ? 'left-0 w-1/2' : 'left-1/2 w-1/2'}`}></div>
+            <TabsTrigger 
+              value="personal" 
+              className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800 data-[state=active]:text-foreground dark:data-[state=active]:text-white transition-colors duration-300"
+            >
+              {t('personal')}
+            </TabsTrigger>
+            <TabsTrigger 
+              value="professional" 
+              className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800 data-[state=active]:text-foreground dark:data-[state=active]:text-white transition-colors duration-300"
+            >
+              {t('professional')}
+            </TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="personal" className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {sortedPersonalProjects.map((project) => (
+                <Card 
+                  key={project.id}
+                  id={`project-${project.id}`}
+                  className="overflow-hidden dark:bg-gray-800 scroll-mt-24 flex flex-col shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-0 relative before:absolute before:inset-0 before:p-[2px] before:bg-gradient-to-r before:from-primary before:to-blue-600 dark:before:from-blue-400 dark:before:to-primary-foreground before:rounded-lg before:-z-10"
+                >
+                  <div className="mx-auto w-full max-w-[300px] pt-4">
+                    <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
+                      />
+                    </div>
                   </div>
-                </div>
-                <CardContent className="p-6 md:p-8 flex-1">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="font-heading text-xl font-bold text-foreground dark:text-white transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    {project.year && (
-                      <Badge variant="outline" className="ml-2 dark:border-gray-600 dark:text-gray-300">
-                        {project.year}
-                      </Badge>
-                    )}
+                  <CardContent className="p-6 md:p-8 flex-1 bg-background dark:bg-gray-800 rounded-lg">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="font-heading text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-primary-foreground">
+                        {project.title}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        {project.year && (
+                          <Badge variant="outline" className="dark:border-gray-600 dark:text-gray-300">
+                            {project.year}
+                          </Badge>
+                        )}
+                        {project.url && (
+                          <a 
+                            href={project.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                            title="Ver sitio web"
+                          >
+                            <Globe size={18} />
+                          </a>
+                        )}
+                        {project.github && (
+                          <a 
+                            href={project.github} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                            title="Ver en GitHub"
+                          >
+                            <Github size={18} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground dark:text-gray-300 mb-4 transition-colors duration-300">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-auto pt-4">
+                      {project.technologies.map((tech, index) => (
+                        <Badge 
+                          key={`${project.id}-tech-${index}`} 
+                          variant="secondary"
+                          className="badge-tech hover:scale-105"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="professional" className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {sortedProfessionalProjects.map((project) => (
+                <Card 
+                  key={project.id}
+                  id={`project-${project.id}`}
+                  className="overflow-hidden dark:bg-gray-800 scroll-mt-24 flex flex-col shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border-0 relative before:absolute before:inset-0 before:p-[2px] before:bg-gradient-to-r before:from-blue-600 before:to-purple-600 dark:before:from-blue-400 dark:before:to-purple-400 before:rounded-lg before:-z-10"
+                >
+                  <div className="mx-auto w-full max-w-[300px] pt-4">
+                    <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
+                      />
+                    </div>
                   </div>
-                  <p className="text-muted-foreground dark:text-gray-300 mb-4 transition-colors duration-300">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                    {project.technologies.map((tech, index) => (
-                      <Badge 
-                        key={`${project.id}-tech-${index}`} 
-                        variant="secondary"
-                        className="badge-tech"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="professional" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {sortedProfessionalProjects.map((project) => (
-              <Card 
-                key={project.id}
-                id={`project-${project.id}`}
-                className="overflow-hidden card-hover dark:bg-gray-800 scroll-mt-24 flex flex-col"
-              >
-                <div className="mx-auto w-full max-w-[300px] pt-4">
-                  <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
-                    />
-                  </div>
-                </div>
-                <CardContent className="p-6 md:p-8 flex-1">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="font-heading text-xl font-bold text-foreground dark:text-white transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    {project.year && (
-                      <Badge variant="outline" className="ml-2 dark:border-gray-600 dark:text-gray-300">
-                        {project.year}
-                      </Badge>
-                    )}
-                  </div>
-                  <p className="text-muted-foreground dark:text-gray-300 mb-4 transition-colors duration-300">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                    {project.technologies.map((tech, index) => (
-                      <Badge 
-                        key={`${project.id}-tech-${index}`} 
-                        variant="secondary"
-                        className="badge-tech"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </TabsContent>
-      </Tabs>
+                  <CardContent className="p-6 md:p-8 flex-1 bg-background dark:bg-gray-800 rounded-lg">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="font-heading text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+                        {project.title}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        {project.year && (
+                          <Badge variant="outline" className="dark:border-gray-600 dark:text-gray-300">
+                            {project.year}
+                          </Badge>
+                        )}
+                        {project.linkedin && (
+                          <a 
+                            href={project.linkedin} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                            title="Ver en LinkedIn"
+                          >
+                            <Linkedin size={18} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground dark:text-gray-300 mb-4 transition-colors duration-300">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-auto pt-4">
+                      {project.technologies.map((tech, index) => (
+                        <Badge 
+                          key={`${project.id}-tech-${index}`} 
+                          variant="secondary"
+                          className="badge-tech hover:scale-105"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
     </section>
   );
 }

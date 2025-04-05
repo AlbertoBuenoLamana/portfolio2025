@@ -5,6 +5,7 @@ import Timeline from '@/components/Timeline';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Goals from '@/components/Goals';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 function Home() {
@@ -12,7 +13,7 @@ function Home() {
     <>
       <Header />
       
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16 md:space-y-24 transition-all duration-300 ease-in-out">
+      <main className="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 md:py-12 space-y-16 md:space-y-24 transition-all duration-300 ease-in-out">
         <section className="scroll-mt-20 transition-all duration-300">
           <Welcome />
         </section>
@@ -31,6 +32,10 @@ function Home() {
         
         <section className="scroll-mt-20 transition-all duration-300">
           <Goals />
+        </section>
+        
+        <section className="scroll-mt-20 transition-all duration-300">
+          <Contact />
         </section>
       </main>
       

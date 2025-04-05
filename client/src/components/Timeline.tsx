@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Zap } from 'lucide-react';
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import { Briefcase, GraduationCap, Star, Zap, ExternalLink } from 'lucide-react';
 
 type TimelineImage = {
   url: string;
@@ -36,9 +37,8 @@ type TimelineNode = {
 function Timeline() {
   const { t } = useLanguage();
   const { isDarkMode } = useTheme();
-  const [activeNode, setActiveNode] = useState<string | null>(null);
 
-  const timelineNodes: TimelineNode[] = [
+  const timelineData: TimelineNode[] = [
     {
       id: '2019',
       year: '2019',
@@ -182,7 +182,7 @@ function Timeline() {
     },
     {
       id: 'future',
-      year: '',
+      year: 'Futuro',
       professional: {
         title: "Arquitecto de Software",
         description: "Evolucionar al rol de arquitectura de software, liderando decisiones técnicas y diseñando soluciones escalables.",
@@ -197,258 +197,250 @@ function Timeline() {
     },
   ];
 
-  const getNodeColor = (type: string) => {
-    // All nodes use the primary color scheme for consistent styling
-    const colors = {
-      primary: {
-        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-        node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-      },
-      secondary: {
-        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-        node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-      },
-      accent: {
-        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-        node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-      },
-      future: {
-        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-        node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
-      }
-    };
+  // Función para manejar el clic en un elemento de timeline
+  const handleElementClick = (node: TimelineNode, type: 'professional' | 'personal') => {
+    const link = type === 'professional' ? node.professional.link : node.personal.link;
     
-    return colors[type as keyof typeof colors] || colors.primary;
-  };
-
-  const handleNodeClick = (id: string, node: TimelineNode) => {
-    setActiveNode(activeNode === id ? null : id);
-    
-    // If node has link in professional or personal, navigate to it
-    const profLink = node.professional.link;
-    const persLink = node.personal.link;
-    
-    if (profLink || persLink) {
-      // Prioritize the link that exists, or if both exist, use the one that's active
-      const linkToUse = profLink && persLink 
-        ? (node.professional.active ? profLink : persLink)
-        : (profLink || persLink);
+    if (link && link.startsWith('#')) {
+      // Obtener el ID del proyecto desde el enlace
+      const projectId = link.substring(link.indexOf('-') + 1);
       
-      if (linkToUse && linkToUse.startsWith('#')) {
-        // Get project ID from the link
-        const projectId = linkToUse.substring(linkToUse.indexOf('-') + 1);
+      // Determinar qué pestaña activar
+      const tabToActivate = type;
+      
+      // Enviar evento para cambiar la pestaña
+      document.dispatchEvent(new CustomEvent('switch-projects-tab', { 
+        detail: { tab: tabToActivate }
+      }));
+      
+      // Establecer el hash y desplazarse al elemento
+      setTimeout(() => {
+        window.location.hash = link.substring(1);
         
-        // Determine which tab (personal or professional) this project belongs to
-        // First check if the link contains explicit indicators
-        let tabToActivate = '';
-        
-        // Check if link explicitly indicates tab
-        if (linkToUse.includes('#project-')) {
-          // These are manual mappings based on project IDs in the links
-          const isPersonalProject = 
-            projectId === 'yeezy' || 
-            projectId === 'lolimprove' || 
-            projectId === 'gym' || 
-            projectId === 'aws' ||  // AWS certification is personal
-            projectId === 'selenium';
-          
-          const isProfessionalProject = 
-            projectId === 'mainrail' || 
-            projectId === 'clun' || 
-            projectId === 'carnet-joven' || 
-            projectId === 'morabanc';
-            
-          if (isPersonalProject) {
-            tabToActivate = 'personal';
-          } else if (isProfessionalProject) {
-            tabToActivate = 'professional';
-          } else {
-            // If no specific match, use the active section of the timeline node
-            tabToActivate = node.professional.active ? 'professional' : 'personal';
-          }
-        } else {
-          // Default fallback based on which link was used
-          tabToActivate = (linkToUse === persLink) ? 'personal' : 'professional';
-        }
-        
-        // Dispatch a custom event to change the tab
-        document.dispatchEvent(new CustomEvent('switch-projects-tab', { 
-          detail: { tab: tabToActivate }
-        }));
-        
-        // Set location hash which will trigger Projects component's hash change handler
         setTimeout(() => {
-          window.location.hash = linkToUse.substring(1);
-          
-          // Ensure the project element is scrolled into view
-          setTimeout(() => {
-            const targetElement = document.getElementById(linkToUse.substring(1));
-            if (targetElement) {
-              targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 100);
-        }, 50);
-      }
+          const targetElement = document.getElementById(link.substring(1));
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }, 50);
     }
   };
 
-  return (
-    <section className="mb-12" id="timeline">
-      <div className="mb-8">
-        <h2 className="section-title">{t('timeline')}</h2>
-        <p className="text-muted-foreground dark:text-gray-400 max-w-3xl transition-colors duration-300">
-          {t('timelineDesc')}
+  // Colores para los diferentes tipos de nodos
+  const getNodeStyles = (nodeType: string, isProfessional: boolean) => {
+    const colors = {
+      primary: {
+        professional: {
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.9) 0%, rgba(79, 70, 229, 1) 100%)',
+          border: 'rgba(99, 102, 241, 0.5)',
+          icon: '#fff',
+        },
+        personal: {
+          background: 'radial-gradient(circle, rgba(96, 165, 250, 0.9) 0%, rgba(59, 130, 246, 1) 100%)',
+          border: 'rgba(59, 130, 246, 0.5)',
+          icon: '#fff',
+        }
+      },
+      secondary: {
+        professional: {
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.9) 0%, rgba(79, 70, 229, 1) 100%)',
+          border: 'rgba(99, 102, 241, 0.5)',
+          icon: '#fff',
+        },
+        personal: {
+          background: 'radial-gradient(circle, rgba(96, 165, 250, 0.9) 0%, rgba(59, 130, 246, 1) 100%)',
+          border: 'rgba(59, 130, 246, 0.5)',
+          icon: '#fff',
+        }
+      },
+      accent: {
+        professional: {
+          background: 'radial-gradient(circle, rgba(167, 139, 250, 0.9) 0%, rgba(124, 58, 237, 1) 100%)',
+          border: 'rgba(139, 92, 246, 0.5)',
+          icon: '#fff',
+        },
+        personal: {
+          background: 'radial-gradient(circle, rgba(37, 99, 235, 0.9) 0%, rgba(29, 78, 216, 1) 100%)',
+          border: 'rgba(29, 78, 216, 0.5)',
+          icon: '#fff',
+        }
+      },
+      future: {
+        professional: {
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.9) 0%, rgba(14, 165, 233, 1) 100%)',
+          border: 'rgba(14, 165, 233, 0.5)',
+          icon: '#fff',
+        },
+        personal: {
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.9) 0%, rgba(14, 165, 233, 1) 100%)',
+          border: 'rgba(14, 165, 233, 0.5)',
+          icon: '#fff',
+        }
+      }
+    };
+    
+    const type = nodeType as keyof typeof colors;
+    return isProfessional 
+      ? colors[type]?.professional || colors.primary.professional 
+      : colors[type]?.personal || colors.primary.personal;
+  };
+
+  // Crear una lista ordenada de elementos de timeline por año
+  const timelineElements = timelineData.map(node => (
+    <React.Fragment key={node.id}>
+      {/* Elemento profesional (izquierda) */}
+      <VerticalTimelineElement
+        key={`professional-${node.id}`}
+        className="vertical-timeline-element--work hover:timeline-element"
+        date={node.year}
+        position="left"
+        dateClassName="font-medium text-gray-600 dark:text-gray-300"
+        contentStyle={{
+          background: isDarkMode ? 'rgba(31, 41, 55, 0.8)' : 'white',
+          color: isDarkMode ? '#e5e7eb' : '#4b5563',
+          boxShadow: '0 3px 10px rgba(0, 0, 0, 0.1)',
+          borderRadius: '0.75rem',
+          border: isDarkMode 
+            ? '1px solid rgba(75, 85, 99, 0.2)' 
+            : '1px solid rgba(99, 102, 241, 0.5)',
+          transition: 'all 0.3s ease-in-out',
+        }}
+        contentArrowStyle={{ 
+          borderRight: `7px solid ${isDarkMode ? 'rgba(31, 41, 55, 0.8)' : 'white'}`,
+        }}
+        iconStyle={{ 
+          background: getNodeStyles(node.nodeType, true).background, 
+          color: getNodeStyles(node.nodeType, true).icon, 
+          boxShadow: `0 0 0 4px ${getNodeStyles(node.nodeType, true).border}`,
+          fontSize: '1rem',
+          transition: 'transform 0.3s ease-in-out',
+        }}
+        icon={node.id === 'future' ? <Zap size={20} /> : <Briefcase size={20} />}
+        onTimelineElementClick={() => handleElementClick(node, 'professional')}
+      >
+        <Badge className="mb-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white border-0" variant="outline">{t('professional')}</Badge>
+        <h3 className="vertical-timeline-element-title text-lg font-semibold mb-1 text-foreground dark:text-white">
+          {node.professional.title}
+        </h3>
+        <p className="text-muted-foreground dark:text-gray-300">
+          {node.professional.description}
         </p>
-      </div>
-      
-      <div className="relative pb-16">
-        {/* Main Timeline Line */}
-        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-primary dark:bg-primary/80 transform md:translate-x-px shadow-md transition-colors duration-300"></div>
-        
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Timeline Nodes */}
-          {timelineNodes.map((node) => {
-            const colorScheme = getNodeColor(node.nodeType);
-            
-            return (
-              <div 
-                key={node.id}
-                className="mb-12"
-              >
-                <div className="flex flex-col md:flex-row items-start">
-                  {/* Left Side (Professional) - Visible only on md+ */}
-                  <div className="hidden md:block w-1/2 pr-8 text-right">
-                    <div className="mb-2 pb-8">
-                      <Badge 
-                        variant="outline"
-                        className="font-medium dark:text-gray-300 dark:border-gray-700"
-                      >
-                        {t('professional')}
-                      </Badge>
-                      <h3 className="text-lg font-medium mt-2 text-foreground dark:text-white transition-colors duration-300 font-heading">
-                        {node.professional.link ? (
-                          <a 
-                            href={node.professional.link} 
-                            className="hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleNodeClick(node.id, node);
-                            }}
-                          >
-                            {node.professional.title}
-                          </a>
-                        ) : (
-                          node.professional.title
-                        )}
-                      </h3>
-                      
-                      <div className="flex items-start gap-3 mt-1">
-                        <p className="text-muted-foreground dark:text-gray-400 transition-colors duration-300">
-                          {node.professional.description}
-                        </p>
-                        {node.professional.image && (
-                          <div className="flex justify-end ml-3 shrink-0">
-                            <a 
-                              href={node.professional.image.link} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center"
-                            >
-                              <img 
-                                src={node.professional.image.url} 
-                                alt={node.professional.image.alt}
-                                className="rounded-md shadow-md transition-transform hover:scale-105 duration-200"
-                                width={node.professional.image.width || 100}
-                                height={node.professional.image.height || 100}
-                              />
-                              <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground dark:text-gray-400" />
-                            </a>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Center Node */}
-                  <div className="md:absolute md:left-1/2 flex flex-col items-center transform md:-translate-x-1/2 z-10">
-                    <button 
-                      onClick={() => handleNodeClick(node.id, node)}
-                      className={`w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110 ${
-                        activeNode === node.id ? 'ring-4 ring-primary ring-opacity-50 dark:ring-primary/70' : ''
-                      }`}
-                    >
-                      {node.id === 'future' ? (
-                        <Zap className="h-6 w-6" />
-                      ) : (
-                        <span className="text-[10px] font-bold text-primary-foreground">{node.year}</span>
-                      )}
-                    </button>
-                  </div>
-                  
-                  {/* Right Side (Personal) */}
-                  <div className="pl-10 md:pl-8 md:w-1/2 mt-2 md:mt-0">
-                    <div className="mb-2 pb-8">
-                      <Badge 
-                        variant="secondary"
-                        className="font-medium dark:bg-gray-700 dark:text-gray-300"
-                      >
-                        {node.id === 'future' ? t('motivation') : t('personal')}
-                      </Badge>
-                      <h3 className="text-lg font-medium mt-2 text-foreground dark:text-white transition-colors duration-300 font-heading">
-                        {node.personal.link ? (
-                          <a 
-                            href={node.personal.link} 
-                            className="hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200"
-                            onClick={(e) => {
-                              if (node.personal.link?.startsWith('#')) {
-                                e.preventDefault();
-                                handleNodeClick(node.id, node);
-                              }
-                            }}
-                          >
-                            {node.personal.title}
-                          </a>
-                        ) : (
-                          node.personal.title
-                        )}
-                      </h3>
-                      
-                      <div className="flex flex-row-reverse items-start gap-3 mt-1">
-                        {node.personal.image && (
-                          <div className="flex shrink-0 mt-1 ml-3">
-                            <a 
-                              href={node.personal.image.link} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center"
-                            >
-                              <img 
-                                src={node.personal.image.url} 
-                                alt={node.personal.image.alt}
-                                className="rounded-md shadow-md transition-transform hover:scale-105 duration-200"
-                                width={node.personal.image.width || 100}
-                                height={node.personal.image.height || 100}
-                              />
-                              <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground dark:text-gray-400" />
-                            </a>
-                          </div>
-                        )}
-                        <p className="text-muted-foreground dark:text-gray-400 transition-colors duration-300">
-                          {node.personal.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        {node.professional.image && (
+          <div className="mt-3">
+            <a 
+              href={node.professional.image.link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block group"
+            >
+              <div className="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-md">
+                <img 
+                  src={node.professional.image.url} 
+                  alt={node.professional.image.alt}
+                  className="transition-transform group-hover:scale-105 duration-200"
+                  width={node.professional.image.width || 80}
+                  height={node.professional.image.height || 60}
+                />
               </div>
-            );
-          })}
+            </a>
+          </div>
+        )}
+      </VerticalTimelineElement>
+
+      {/* Elemento personal (derecha) */}
+      <VerticalTimelineElement
+        key={`personal-${node.id}`}
+        className="vertical-timeline-element--education hover:timeline-element"
+        date={node.year}
+        position="right"
+        dateClassName="font-medium text-gray-600 dark:text-gray-300"
+        contentStyle={{
+          background: isDarkMode ? 'rgba(31, 41, 55, 0.8)' : 'white',
+          color: isDarkMode ? '#e5e7eb' : '#4b5563',
+          boxShadow: '0 3px 10px rgba(0, 0, 0, 0.1)',
+          borderRadius: '0.75rem',
+          border: isDarkMode 
+            ? '1px solid rgba(75, 85, 99, 0.2)' 
+            : '1px solid rgba(59, 130, 246, 0.5)',
+          transition: 'all 0.3s ease-in-out',
+        }}
+        contentArrowStyle={{ 
+          borderRight: `7px solid ${isDarkMode ? 'rgba(31, 41, 55, 0.8)' : 'white'}`,
+        }}
+        iconStyle={{ 
+          background: getNodeStyles(node.nodeType, false).background, 
+          color: getNodeStyles(node.nodeType, false).icon, 
+          boxShadow: `0 0 0 4px ${getNodeStyles(node.nodeType, false).border}`,
+          fontSize: '1rem',
+          transition: 'transform 0.3s ease-in-out',
+        }}
+        icon={node.id === 'future' ? <Star size={20} /> : <GraduationCap size={20} />}
+        onTimelineElementClick={() => handleElementClick(node, 'personal')}
+      >
+        <Badge className={`mb-2 ${node.id === 'future' ? 'bg-gradient-to-r from-sky-400 to-cyan-500 hover:from-sky-500 hover:to-cyan-600' : 'bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700'} text-white border-0`} variant={node.id === 'future' ? 'default' : 'secondary'}>
+          {node.id === 'future' ? t('motivation') : t('personal')}
+        </Badge>
+        <h3 className="vertical-timeline-element-title text-lg font-semibold mb-1 text-foreground dark:text-white">
+          {node.personal.title}
+        </h3>
+        <p className="text-muted-foreground dark:text-gray-300">
+          {node.personal.description}
+        </p>
+        {node.personal.image && (
+          <div className="mt-3">
+            <a 
+              href={node.personal.image.link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block group"
+            >
+              <div className="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-md">
+                <img 
+                  src={node.personal.image.url} 
+                  alt={node.personal.image.alt}
+                  className="transition-transform group-hover:scale-105 duration-200"
+                  width={node.personal.image.width || 80}
+                  height={node.personal.image.height || 60}
+                />
+              </div>
+            </a>
+          </div>
+        )}
+      </VerticalTimelineElement>
+    </React.Fragment>
+  ));
+
+  return (
+    <section className="relative mb-16" id="timeline">
+      {/* Background blob effect */}
+      <div className="blob-effect w-96 h-96 opacity-30 left-[-10%] top-[30%]"></div>
+      
+      <div className="section-container">
+        <div className="mb-8 relative z-10">
+          <h2 className="section-title">{t('timeline')}</h2>
+          <p className="text-muted-foreground dark:text-gray-400 transition-colors duration-300">
+            {t('timelineDesc')}
+          </p>
         </div>
+        
+        {/* Estilos CSS para efectos hover */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          .vertical-timeline-element--work .vertical-timeline-element-content:hover,
+          .vertical-timeline-element--education .vertical-timeline-element-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+          }
+          
+          .vertical-timeline-element--work:hover .vertical-timeline-element-icon,
+          .vertical-timeline-element--education:hover .vertical-timeline-element-icon {
+            transform: scale(1.15);
+          }
+        `}} />
+        
+        <VerticalTimeline animate={true} lineColor={isDarkMode ? 'rgba(75, 85, 99, 0.3)' : 'rgba(229, 231, 235, 0.7)'}>
+          {timelineElements}
+        </VerticalTimeline>
       </div>
     </section>
   );
