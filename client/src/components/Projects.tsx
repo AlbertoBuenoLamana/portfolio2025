@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useTheme } from '@/contexts/ThemeContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 type Project = {
@@ -16,9 +14,8 @@ type Project = {
   year?: string;
 };
 
-const Projects: React.FC = () => {
+function Projects() {
   const { t } = useLanguage();
-  const { isDarkMode } = useTheme();
   const [activeTab, setActiveTab] = useState<string>('personal');
 
   const projects: Project[] = [
@@ -120,7 +117,7 @@ const Projects: React.FC = () => {
   const sortedProfessionalProjects = sortProjectsByYear(professionalProjects);
   
   // Handle hash change to switch to correct tab if needed
-  React.useEffect(() => {
+  useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash && hash.startsWith('#project-')) {
@@ -158,62 +155,70 @@ const Projects: React.FC = () => {
   }, [projects]);
 
   return (
-    <section className="mb-12" id="projects">
+    <section className="mb-12 pt-4" id="projects">
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">{t('projects')}</h2>
-        <p className="text-muted-foreground max-w-3xl">
+        <h2 className="section-title">{t('projects')}</h2>
+        <p className="text-muted-foreground dark:text-gray-300 max-w-3xl transition-colors duration-300">
           {t('projectsDesc')}
         </p>
       </div>
       
-      <Tabs defaultValue="personal" className="w-full" onValueChange={setActiveTab}>
-        <TabsList className="mb-6 grid w-full grid-cols-2 max-w-md">
-          <TabsTrigger value="personal">{t('personal')}</TabsTrigger>
-          <TabsTrigger value="professional">{t('professional')}</TabsTrigger>
+      <Tabs defaultValue={activeTab} value={activeTab} className="w-full" onValueChange={setActiveTab}>
+        <TabsList className="mb-6 grid w-full grid-cols-2 max-w-md bg-muted dark:bg-gray-700 transition-colors duration-300">
+          <TabsTrigger 
+            value="personal" 
+            className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800 data-[state=active]:text-foreground dark:data-[state=active]:text-white transition-colors duration-300"
+          >
+            {t('personal')}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="professional" 
+            className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800 data-[state=active]:text-foreground dark:data-[state=active]:text-white transition-colors duration-300"
+          >
+            {t('professional')}
+          </TabsTrigger>
         </TabsList>
         
         <TabsContent value="personal" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {sortedPersonalProjects.map((project) => (
               <Card 
                 key={project.id}
                 id={`project-${project.id}`}
-                className="overflow-hidden hover:shadow-lg transition-shadow duration-200 scroll-mt-24 flex flex-col"
+                className="overflow-hidden card-hover dark:bg-gray-800 scroll-mt-24 flex flex-col"
               >
                 <div className="mx-auto w-full max-w-[300px] pt-4">
-                  <div className="relative aspect-[3/2] bg-muted overflow-hidden rounded-md shadow-sm">
+                  <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
                     />
                   </div>
                 </div>
-                <CardContent className="p-6 flex-1">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold">{project.title}</h3>
+                <CardContent className="p-6 md:p-8 flex-1">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="font-heading text-xl font-bold text-foreground dark:text-white transition-colors duration-300">
+                      {project.title}
+                    </h3>
                     {project.year && (
-                      <Badge variant="outline" className="ml-2">
+                      <Badge variant="outline" className="ml-2 dark:border-gray-600 dark:text-gray-300">
                         {project.year}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <p className="text-muted-foreground dark:text-gray-300 mb-4 transition-colors duration-300">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
                     {project.technologies.map((tech, index) => (
-                      <span 
-                        key={`${project.id}-tech-${index}`}
-                        className="px-2 py-1 bg-muted text-xs font-medium rounded-full"
+                      <Badge 
+                        key={`${project.id}-tech-${index}`} 
+                        variant="secondary"
+                        className="badge-tech"
                       >
                         {tech}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href="#">{t('viewDetails')}</a>
-                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -221,47 +226,45 @@ const Projects: React.FC = () => {
         </TabsContent>
         
         <TabsContent value="professional" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {sortedProfessionalProjects.map((project) => (
               <Card 
                 key={project.id}
                 id={`project-${project.id}`}
-                className="overflow-hidden hover:shadow-lg transition-shadow duration-200 scroll-mt-24 flex flex-col"
+                className="overflow-hidden card-hover dark:bg-gray-800 scroll-mt-24 flex flex-col"
               >
                 <div className="mx-auto w-full max-w-[300px] pt-4">
-                  <div className="relative aspect-[3/2] bg-muted overflow-hidden rounded-md shadow-sm">
+                  <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
                     />
                   </div>
                 </div>
-                <CardContent className="p-6 flex-1">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold">{project.title}</h3>
+                <CardContent className="p-6 md:p-8 flex-1">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="font-heading text-xl font-bold text-foreground dark:text-white transition-colors duration-300">
+                      {project.title}
+                    </h3>
                     {project.year && (
-                      <Badge variant="secondary" className="ml-2">
+                      <Badge variant="outline" className="ml-2 dark:border-gray-600 dark:text-gray-300">
                         {project.year}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <p className="text-muted-foreground dark:text-gray-300 mb-4 transition-colors duration-300">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
                     {project.technologies.map((tech, index) => (
-                      <span 
-                        key={`${project.id}-tech-${index}`}
-                        className="px-2 py-1 bg-muted text-xs font-medium rounded-full"
+                      <Badge 
+                        key={`${project.id}-tech-${index}`} 
+                        variant="secondary"
+                        className="badge-tech"
                       >
                         {tech}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href="#">{t('viewDetails')}</a>
-                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -270,6 +273,6 @@ const Projects: React.FC = () => {
       </Tabs>
     </section>
   );
-};
+}
 
 export default Projects;

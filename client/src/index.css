@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -70,6 +72,68 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl lg:text-5xl leading-tight;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl lg:text-4xl leading-tight;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl leading-tight;
+  }
+
+  .accent-text {
+    font-family: 'Playfair Display', serif;
+    @apply text-primary dark:text-primary-foreground;
+  }
+
+  .highlight {
+    @apply bg-primary/10 dark:bg-primary/20 px-1 py-0.5 rounded;
+  }
+
+  .bold-text {
+    @apply font-bold text-primary dark:text-primary-foreground;
+  }
+
+  .subtle-text {
+    @apply text-muted-foreground dark:text-gray-400 italic;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-2xl font-semibold mb-4 text-foreground dark:text-white transition-colors duration-300;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 3px;
+    width: 40px;
+    @apply bg-primary rounded-full;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg dark:hover:shadow-primary/5 hover:scale-[1.02];
+  }
+
+  .badge-tech {
+    @apply bg-primary/5 dark:bg-primary/10 text-primary dark:text-primary-foreground border-0 
+           hover:bg-primary/10 dark:hover:bg-primary/15 transition-colors duration-200;
   }
 }

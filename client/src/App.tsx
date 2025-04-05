@@ -21,7 +21,7 @@ function App() {
     <ThemeProvider>
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
-          <div className="min-h-screen flex flex-col bg-background text-foreground">
+          <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300 ease-in-out dark:bg-gray-900 dark:text-gray-100 px-2 sm:px-4">
             <Router />
             <Toaster />
           </div>

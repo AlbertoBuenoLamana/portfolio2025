@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useTheme } from '@/contexts/ThemeContext';
 import { Card, CardContent } from '@/components/ui/card';
 
 type SkillCategory = {
@@ -10,15 +9,14 @@ type SkillCategory = {
   skills: string[];
 };
 
-const Skills: React.FC = () => {
+function Skills() {
   const { t } = useLanguage();
-  const { isDarkMode } = useTheme();
 
   const skillCategories: SkillCategory[] = [
     {
       id: 'frontend',
       title: t('frontend'),
-      color: 'text-primary',
+      color: 'text-primary dark:text-primary-foreground',
       skills: ['HTML5', 'CSS3', 'TypeScript', 'Angular', 'Polymer', 'Material Design', 'TailwindCSS', 'SASS']
     },
     {
@@ -54,27 +52,27 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section className="mb-12" id="skills">
+    <section className="mb-12 pt-4" id="skills">
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">{t('skills')}</h2>
-        <p className="text-muted-foreground max-w-3xl">
+        <h2 className="section-title">{t('skills')}</h2>
+        <p className="text-muted-foreground dark:text-gray-300 max-w-3xl transition-colors duration-300">
           {t('skillsDesc')}
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {skillCategories.map((category) => (
           <Card 
             key={category.id}
-            className="hover:shadow-lg transition-shadow duration-200"
+            className="card-hover dark:bg-gray-800"
           >
-            <CardContent className="p-6">
-              <h3 className={`text-xl font-semibold mb-4 ${category.color}`}>{category.title}</h3>
+            <CardContent className="p-6 md:p-8">
+              <h3 className={`font-heading text-xl font-semibold mb-4 ${category.color} transition-colors duration-300`}>{category.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, index) => (
                   <span 
                     key={`${category.id}-${index}`}
-                    className="px-3 py-1 bg-card border border-border rounded-full text-sm font-medium"
+                    className="px-3 py-1 bg-card dark:bg-gray-700 border border-border dark:border-gray-600 rounded-full text-sm font-medium transition-all duration-200 hover:bg-primary/5 dark:hover:bg-primary/10 cursor-default"
                   >
                     {skill}
                   </span>
@@ -86,6 +84,6 @@ const Skills: React.FC = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Skills;

@@ -1,45 +1,38 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useTheme } from '@/contexts/ThemeContext';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
 
-const Footer: React.FC = () => {
+function Footer() {
   const { t } = useLanguage();
-  const { isDarkMode } = useTheme();
 
   return (
-    <footer className={`py-6 mt-auto transition-colors duration-200 shadow-md ${
-      isDarkMode ? 'bg-gray-800' : 'bg-white'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+    <footer className="py-8 px-4 sm:px-6 md:px-8 mt-auto shadow-md bg-white dark:bg-gray-800 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div>
+            <p className="text-gray-600 dark:text-gray-300">
               {t('copyright')}
             </p>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex space-x-6">
             <a 
               href="#" 
-              className={`${
-                isDarkMode ? 'text-gray-400 hover:text-primary-light' : 'text-gray-600 hover:text-primary'
-              } transition-colors duration-200`}
+              className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-foreground transform hover:scale-110 transition-all duration-200"
+              aria-label="GitHub"
             >
               <GithubIcon className="h-6 w-6" />
             </a>
             <a 
               href="#" 
-              className={`${
-                isDarkMode ? 'text-gray-400 hover:text-primary-light' : 'text-gray-600 hover:text-primary'
-              } transition-colors duration-200`}
+              className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-foreground transform hover:scale-110 transition-all duration-200"
+              aria-label="LinkedIn"
             >
               <LinkedinIcon className="h-6 w-6" />
             </a>
             <a 
               href="#" 
-              className={`${
-                isDarkMode ? 'text-gray-400 hover:text-primary-light' : 'text-gray-600 hover:text-primary'
-              } transition-colors duration-200`}
+              className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-foreground transform hover:scale-110 transition-all duration-200"
+              aria-label="Twitter"
             >
               <TwitterIcon className="h-6 w-6" />
             </a>
@@ -48,6 +41,6 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

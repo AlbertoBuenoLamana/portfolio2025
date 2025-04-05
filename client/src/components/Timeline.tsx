@@ -33,7 +33,7 @@ type TimelineNode = {
   nodeType: 'primary' | 'secondary' | 'accent' | 'future';
 };
 
-const Timeline: React.FC = () => {
+function Timeline() {
   const { t } = useLanguage();
   const { isDarkMode } = useTheme();
   const [activeNode, setActiveNode] = useState<string | null>(null);
@@ -201,24 +201,24 @@ const Timeline: React.FC = () => {
     // All nodes use the primary color scheme for consistent styling
     const colors = {
       primary: {
-        bg: 'bg-primary/10 text-primary',
+        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
         node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary',
+        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
       },
       secondary: {
-        bg: 'bg-primary/10 text-primary',
+        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
         node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary',
+        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
       },
       accent: {
-        bg: 'bg-primary/10 text-primary',
+        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
         node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary',
+        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
       },
       future: {
-        bg: 'bg-primary/10 text-primary',
+        bg: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
         node: 'bg-primary text-primary-foreground',
-        badge: 'bg-primary/10 text-primary',
+        badge: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground',
       }
     };
     
@@ -299,15 +299,15 @@ const Timeline: React.FC = () => {
   return (
     <section className="mb-12" id="timeline">
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">{t('timeline')}</h2>
-        <p className="text-muted-foreground max-w-3xl">
+        <h2 className="section-title">{t('timeline')}</h2>
+        <p className="text-muted-foreground dark:text-gray-400 max-w-3xl transition-colors duration-300">
           {t('timelineDesc')}
         </p>
       </div>
       
       <div className="relative pb-16">
         {/* Main Timeline Line */}
-        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-primary transform md:translate-x-px shadow-md"></div>
+        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-primary dark:bg-primary/80 transform md:translate-x-px shadow-md transition-colors duration-300"></div>
         
         {/* Timeline Container */}
         <div className="relative">
@@ -326,15 +326,15 @@ const Timeline: React.FC = () => {
                     <div className="mb-2 pb-8">
                       <Badge 
                         variant="outline"
-                        className="font-medium"
+                        className="font-medium dark:text-gray-300 dark:border-gray-700"
                       >
                         {t('professional')}
                       </Badge>
-                      <h3 className="text-lg font-medium mt-2">
+                      <h3 className="text-lg font-medium mt-2 text-foreground dark:text-white transition-colors duration-300 font-heading">
                         {node.professional.link ? (
                           <a 
                             href={node.professional.link} 
-                            className="hover:text-primary transition-colors"
+                            className="hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200"
                             onClick={(e) => {
                               e.preventDefault();
                               handleNodeClick(node.id, node);
@@ -348,36 +348,26 @@ const Timeline: React.FC = () => {
                       </h3>
                       
                       <div className="flex items-start gap-3 mt-1">
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground dark:text-gray-400 transition-colors duration-300">
                           {node.professional.description}
                         </p>
                         {node.professional.image && (
                           <div className="flex justify-end ml-3 shrink-0">
-                            {node.professional.image.link ? (
-                              <a 
-                                href={node.professional.image.link} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center"
-                              >
-                                <img 
-                                  src={node.professional.image.url} 
-                                  alt={node.professional.image.alt}
-                                  className="rounded-md shadow-md transition-transform hover:scale-105"
-                                  width={node.professional.image.width || 100}
-                                  height={node.professional.image.height || 100}
-                                />
-                                <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground" />
-                              </a>
-                            ) : (
+                            <a 
+                              href={node.professional.image.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center"
+                            >
                               <img 
                                 src={node.professional.image.url} 
                                 alt={node.professional.image.alt}
-                                className="rounded-md shadow-md"
+                                className="rounded-md shadow-md transition-transform hover:scale-105 duration-200"
                                 width={node.professional.image.width || 100}
                                 height={node.professional.image.height || 100}
                               />
-                            )}
+                              <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                            </a>
                           </div>
                         )}
                       </div>
@@ -389,7 +379,7 @@ const Timeline: React.FC = () => {
                     <button 
                       onClick={() => handleNodeClick(node.id, node)}
                       className={`w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110 ${
-                        activeNode === node.id ? 'ring-4 ring-primary ring-opacity-50' : ''
+                        activeNode === node.id ? 'ring-4 ring-primary ring-opacity-50 dark:ring-primary/70' : ''
                       }`}
                     >
                       {node.id === 'future' ? (
@@ -405,15 +395,15 @@ const Timeline: React.FC = () => {
                     <div className="mb-2 pb-8">
                       <Badge 
                         variant="secondary"
-                        className="font-medium"
+                        className="font-medium dark:bg-gray-700 dark:text-gray-300"
                       >
                         {node.id === 'future' ? t('motivation') : t('personal')}
                       </Badge>
-                      <h3 className="text-lg font-medium mt-2">
+                      <h3 className="text-lg font-medium mt-2 text-foreground dark:text-white transition-colors duration-300 font-heading">
                         {node.personal.link ? (
                           <a 
                             href={node.personal.link} 
-                            className="hover:text-primary transition-colors"
+                            className="hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200"
                             onClick={(e) => {
                               if (node.personal.link?.startsWith('#')) {
                                 e.preventDefault();
@@ -431,51 +421,24 @@ const Timeline: React.FC = () => {
                       <div className="flex flex-row-reverse items-start gap-3 mt-1">
                         {node.personal.image && (
                           <div className="flex shrink-0 mt-1 ml-3">
-                            {node.personal.image.link ? (
-                              <a 
-                                href={node.personal.image.link} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center"
-                              >
-                                <img 
-                                  src={node.personal.image.url} 
-                                  alt={node.personal.image.alt}
-                                  className="rounded-md shadow-md transition-transform hover:scale-105"
-                                  width={node.personal.image.width || 100}
-                                  height={node.personal.image.height || 100}
-                                />
-                                <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground" />
-                              </a>
-                            ) : node.personal.link ? (
-                              <a 
-                                href={node.personal.link}
-                                className="inline-flex items-center cursor-pointer"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  handleNodeClick(node.id, node);
-                                }}
-                              >
-                                <img 
-                                  src={node.personal.image.url} 
-                                  alt={node.personal.image.alt}
-                                  className="rounded-md shadow-md transition-transform hover:scale-105 ring-2 ring-transparent hover:ring-primary"
-                                  width={node.personal.image.width || 100}
-                                  height={node.personal.image.height || 100}
-                                />
-                              </a>
-                            ) : (
+                            <a 
+                              href={node.personal.image.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center"
+                            >
                               <img 
                                 src={node.personal.image.url} 
                                 alt={node.personal.image.alt}
-                                className="rounded-md shadow-md"
+                                className="rounded-md shadow-md transition-transform hover:scale-105 duration-200"
                                 width={node.personal.image.width || 100}
                                 height={node.personal.image.height || 100}
                               />
-                            )}
+                              <ExternalLink className="ml-1 h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                            </a>
                           </div>
                         )}
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground dark:text-gray-400 transition-colors duration-300">
                           {node.personal.description}
                         </p>
                       </div>
@@ -489,6 +452,6 @@ const Timeline: React.FC = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Timeline;
