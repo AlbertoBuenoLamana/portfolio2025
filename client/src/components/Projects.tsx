@@ -137,34 +137,85 @@ function Projects() {
         const project = projects.find(p => p.id === projectId);
         
         if (project) {
+          // Importante: Asegurar que el estado se actualice correctamente
+          console.log("Cambiando a pestaña por hash:", project.type);
           setActiveTab(project.type);
+          
+          // Pequeño retraso para asegurar que el cambio de pestaña se procese
           setTimeout(() => {
             const element = document.getElementById(hash.substring(1));
             if (element) {
               element.scrollIntoView({ behavior: 'smooth' });
+              
+              // Añadir clase de resaltado
+              element.classList.add('highlighted-card');
+              
+              // Eliminar la clase después de 3 segundos
+              setTimeout(() => {
+                element.classList.remove('highlighted-card');
+              }, 3000);
             }
-          }, 100);
+          }, 300); // Aumentar el tiempo de espera
         }
       }
     };
     
-    // Handle the custom tab switch event from Timeline
-    const handleTabSwitch = (event: CustomEvent) => {
-      if (event.detail && event.detail.tab) {
-        setActiveTab(event.detail.tab);
-      }
-    };
-    
-    // Check on mount and when hash changes
+    // Ejecutar handleHashChange cuando el componente se monta o cuando cambia el hash
     handleHashChange();
+    
+    // Añadir el event listener para cambios de hash
     window.addEventListener('hashchange', handleHashChange);
-    document.addEventListener('switch-projects-tab', handleTabSwitch as EventListener);
     
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, [projects]); // Este useEffect depende solo de projects
+  
+  // Función específica para cambiar la pestaña al hacer clic
+  const handleTabChange = (value: string) => {
+    // Establecer la pestaña activa
+    setActiveTab(value);
+    
+    // Si hay un hash en la URL, hay que limpiarlo para que el usuario pueda cambiar entre pestañas libremente
+    if (window.location.hash && window.location.hash.startsWith('#project-')) {
+      // Usar history API para reemplazar la URL sin recargar la página
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  };
+
+  // Manejar el evento personalizado desde Timeline
+  useEffect(() => {
+    const handleTabSwitch = (event: CustomEvent) => {
+      if (event.detail && event.detail.tab) {
+        console.log("Cambiando a pestaña por evento:", event.detail.tab);
+        setActiveTab(event.detail.tab);
+        
+        // Si no queremos mantener el hash (cambio de pestaña directo), lo limpiamos
+        if (!event.detail.keepHash && window.location.hash) {
+          setTimeout(() => {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+          }, 50);
+        }
+      }
+    };
+    
+    document.addEventListener('switch-projects-tab', handleTabSwitch as EventListener);
+    
+    return () => {
       document.removeEventListener('switch-projects-tab', handleTabSwitch as EventListener);
     };
-  }, [projects]);
+  }, []); // Este useEffect no tiene dependencias
+
+  // Actualizar la vista cuando cambia activeTab
+  useEffect(() => {
+    // Cuando se cambia la pestaña, hacer scroll al inicio de la sección de proyectos
+    if (activeTab) {
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [activeTab]);
 
   return (
     <section className="mb-12 pt-4 relative" id="projects">
@@ -179,7 +230,39 @@ function Projects() {
           </p>
         </div>
         
-        <Tabs defaultValue={activeTab} value={activeTab} className="w-full" onValueChange={setActiveTab}>
+        {/* Estilos para tarjetas resaltadas */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          .highlighted-card {
+            animation: highlight-pulse 3s ease-in-out;
+            position: relative;
+            z-index: 20;
+          }
+          
+          @keyframes highlight-pulse {
+            0% { 
+              box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+              transform: scale(1);
+            }
+            20% { 
+              box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+              transform: scale(1.02);
+            }
+            40% { 
+              box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+              transform: scale(1.01);
+            }
+            60% { 
+              box-shadow: 0 0 0 5px rgba(99, 102, 241, 0);
+              transform: scale(1.015);
+            }
+            100% { 
+              box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+              transform: scale(1);
+            }
+          }
+        `}} />
+        
+        <Tabs defaultValue={activeTab} value={activeTab} className="w-full" onValueChange={handleTabChange}>
           <TabsList className="mb-6 grid w-full grid-cols-2 max-w-md bg-muted dark:bg-gray-700 transition-colors duration-300 relative overflow-hidden">
             <div className={`absolute bottom-0 h-0.5 bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-primary-foreground transition-all duration-300 ${activeTab === 'personal' ? 'left-0 w-1/2' : 'left-1/2 w-1/2'}`}></div>
             <TabsTrigger 

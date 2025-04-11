@@ -6,6 +6,27 @@
     <title>Mi Trayectoria Profesional | Resume Timeline</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <meta name="description" content="Resume timeline showcasing professional journey from 2019 to present, with skills and projects." />
+    <script>
+      // Script para garantizar que la página se cargue desde el inicio
+      window.onload = function() {
+        // Si hay un hash en la URL pero no es una navegación intencional
+        if (window.location.hash && !sessionStorage.getItem('intentionalNavigation')) {
+          // Limpiar el hash
+          window.history.replaceState(null, '', window.location.pathname);
+          // Forzar scroll al inicio
+          window.scrollTo(0, 0);
+        }
+        // Para navegaciones intencionales dentro de la página
+        sessionStorage.removeItem('intentionalNavigation');
+      };
+      
+      // Marcar navegaciones intencionales dentro de la página
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.tagName === 'A' && e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
+          sessionStorage.setItem('intentionalNavigation', 'true');
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>

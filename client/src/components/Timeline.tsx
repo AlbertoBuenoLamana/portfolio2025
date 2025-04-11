@@ -208,22 +208,45 @@ function Timeline() {
       // Determinar qué pestaña activar
       const tabToActivate = type;
       
-      // Enviar evento para cambiar la pestaña
-      document.dispatchEvent(new CustomEvent('switch-projects-tab', { 
-        detail: { tab: tabToActivate }
-      }));
+      // Crear y lanzar un evento personalizado para cambiar la pestaña
+      const switchEvent = new CustomEvent('switch-projects-tab', { 
+        detail: { 
+          tab: tabToActivate,
+          keepHash: true, // Indicar que queremos mantener el hash para este evento
+          projectId: projectId
+        }
+      });
+      document.dispatchEvent(switchEvent);
       
-      // Establecer el hash y desplazarse al elemento
+      // En lugar de establecer el hash directamente (que causa un salto instantáneo),
+      // primero hacemos scroll y luego actualizamos el hash
       setTimeout(() => {
-        window.location.hash = link.substring(1);
+        // Obtener el elemento antes de cambiar el hash
+        const targetElementId = `project-${projectId}`;
+        const targetElement = document.getElementById(targetElementId);
         
-        setTimeout(() => {
-          const targetElement = document.getElementById(link.substring(1));
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      }, 50);
+        if (targetElement) {
+          // Hacer scroll suavemente primero
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          
+          // Después del scroll, actualizar el hash sin causar otro salto
+          setTimeout(() => {
+            // Usar history.replaceState para actualizar la URL sin causar salto
+            history.replaceState(null, '', link);
+            
+            // Añadir clase de destacado
+            targetElement.classList.add('highlighted-card');
+            
+            // Remover la clase después de 3 segundos
+            setTimeout(() => {
+              targetElement.classList.remove('highlighted-card');
+            }, 3000);
+          }, 800); // Esperar a que termine la animación de scroll
+        } else {
+          // Si no encontramos el elemento, simplemente actualizamos el hash como fallback
+          window.location.hash = link.substring(1);
+        }
+      }, 100);
     }
   };
 
@@ -327,7 +350,7 @@ function Timeline() {
           {node.professional.description}
         </p>
         {node.professional.image && (
-          <div className="mt-3">
+          <div className="mt-3 flex justify-center">
             <a 
               href={node.professional.image.link} 
               target="_blank" 
@@ -388,7 +411,7 @@ function Timeline() {
           {node.personal.description}
         </p>
         {node.personal.image && (
-          <div className="mt-3">
+          <div className="mt-3 flex justify-center">
             <a 
               href={node.personal.image.link} 
               target="_blank" 
@@ -435,6 +458,35 @@ function Timeline() {
           .vertical-timeline-element--work:hover .vertical-timeline-element-icon,
           .vertical-timeline-element--education:hover .vertical-timeline-element-icon {
             transform: scale(1.15);
+          }
+          
+          .highlighted-card {
+            animation: highlight-pulse 3s ease-in-out;
+            position: relative;
+            z-index: 20;
+          }
+          
+          @keyframes highlight-pulse {
+            0% { 
+              box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+              transform: scale(1);
+            }
+            20% { 
+              box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+              transform: scale(1.02);
+            }
+            40% { 
+              box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+              transform: scale(1.01);
+            }
+            60% { 
+              box-shadow: 0 0 0 5px rgba(99, 102, 241, 0);
+              transform: scale(1.015);
+            }
+            100% { 
+              box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+              transform: scale(1);
+            }
           }
         `}} />
         
