@@ -10,7 +10,12 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('es'); // Spanish as default
+  const getBrowserLanguage = (): Language => {
+    const browserLang = navigator.language.split('-')[0];
+    return browserLang === 'es' ? 'es' : 'en';
+  };
+
+  const [language, setLanguage] = useState<Language>(getBrowserLanguage());
 
   const toggleLanguage = () => {
     setLanguage(prevLang => prevLang === 'es' ? 'en' : 'es');

@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Badge } from '@/components/ui/badge';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { Briefcase, GraduationCap, Star, Zap, ExternalLink } from 'lucide-react';
@@ -35,7 +36,7 @@ type TimelineNode = {
 };
 
 function Timeline() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { isDarkMode } = useTheme();
 
   const timelineData: TimelineNode[] = [
@@ -43,13 +44,13 @@ function Timeline() {
       id: '2019',
       year: '2019',
       professional: {
-        title: "Desarrollador Full Stack Senior en Inycom",
-        description: "Comencé a trabajar como desarrollador Full Stack Senior en Inycom, enfocándome en proyectos web con TypeScript/Angular y Java.",
+        title: t('node2019Prof'),
+        description: t('node2019ProfDesc'),
         active: true,
       },
       personal: {
-        title: "Selenium FIFA",
-        description: "Creación de un proyecto con Java y Selenium que automatizaba la compra y venta de jugadores en FIFA para obtener beneficios con la moneda virtual del juego.",
+        title: t('node2019Pers'),
+        description: t('node2019PersDesc'),
         active: true,
         link: "#project-seleniumfifa"
       },
@@ -59,14 +60,14 @@ function Timeline() {
       id: '2020',
       year: '2020',
       professional: {
-        title: "Carnet Joven Islas Baleares",
-        description: "Desarrollo completo de plataforma de usuario con Java 8 (Spring, Hibernate, JPA) y Angular 7, integrando servicios AWS como S3, SES, API Gateway y Lambda.",
+        title: t('node2020Prof'),
+        description: t('node2020ProfDesc'),
         active: true,
         link: "#project-carnetjoven"
       },
       personal: {
-        title: "Profundización en AWS",
-        description: "Estudio y práctica con servicios de AWS como Lambda, EC2, RDS y S3 para mejorar mi comprensión de servicios cloud.",
+        title: t('node2020Pers'),
+        description: t('node2020PersDesc'),
         active: true,
       },
       nodeType: 'primary',
@@ -75,21 +76,15 @@ function Timeline() {
       id: '2021',
       year: '2021',
       professional: {
-        title: "MainRail",
-        description: "Comencé en MainRail realizando pruebas unitarias con Selenium, trabajando con PHP como backend y Polymer 2 como frontend, enfocado en el mantenimiento de ferrocarriles.",
+        title: t('node2021Prof'),
+        description: t('node2021ProfDesc'),
         active: true,
         link: "#project-mainrail"
       },
       personal: {
-        title: "Yeezy Scrapper",
-        description: "Creación de un script de Python que verificaba precios de zapatillas en StockX usando AWS SAM.",
+        title: t('node2021Pers'),
+        description: t('node2021PersDesc'),
         active: true,
-        image: {
-          url: "/images/timeline-yeezyscrapper.png",
-          alt: "Yeezy Scrapper Project",
-          width: 80,
-          height: 60
-        },
         link: "#project-yeezyscrapper"
       },
       nodeType: 'primary',
@@ -98,14 +93,14 @@ function Timeline() {
       id: '2022',
       year: '2022',
       professional: {
-        title: "MainRail - Migración y mejoras",
-        description: "Migración de MainRail de Polymer 3 a Angular 11 y Lumen, optimización de consultas PostgreSQL y despliegue en AWS EC2 y RDS.",
+        title: t('node2022Prof'),
+        description: t('node2022ProfDesc'),
         active: true,
         link: "#project-mainrail"
       },
       personal: {
-        title: "Gym App - Inicio del desarrollo",
-        description: "Comienzo del desarrollo de una aplicación web full-stack para gestión de gimnasios con Angular y Spring Boot.",
+        title: t('node2022Pers'),
+        description: t('node2022PersDesc'),
         active: true,
         link: "#project-gymapp"
       },
@@ -115,14 +110,14 @@ function Timeline() {
       id: '2023',
       year: '2023',
       professional: {
-        title: "Morabanc",
-        description: "Proyecto bancario en Angular 13 migrando desde AngularJS, optimizando el rendimiento.",
+        title: t('node2023Prof'),
+        description: t('node2023ProfDesc'),
         active: true,
         link: "#project-morabanc"
       },
       personal: {
-        title: "Gym App y Certificación AWS",
-        description: "Continuación del desarrollo de Gym App, implementando funcionalidades. Obtención de la certificación AWS Certified Developer – Associate.",
+        title: t('node2023Pers'),
+        description: t('node2023PersDesc'),
         active: true,
         image: {
           url: "/images/timeline-aws-cert.png",
@@ -139,21 +134,15 @@ function Timeline() {
       id: '2024',
       year: '2024',
       professional: {
-        title: "CLUN - API con Spring Boot 3",
-        description: "Desarrollo desde cero de API con Spring Boot 3 y Java 21, con integraciones múltiples y documentación completa con Swagger.",
+        title: t('node2024Prof'),
+        description: t('node2024ProfDesc'),
         active: true,
         link: "#project-clun"
       },
       personal: {
-        title: "Vibe Coding y IA",
-        description: "Descubrimiento y dominio del vibe coding, utilizando herramientas de IA avanzadas como Cursor, Windsurf, Claude y Ollama para revolucionar mi flujo de desarrollo y aumentar la productividad de manera exponencial.",
+        title: t('node2024Pers'),
+        description: t('node2024PersDesc'),
         active: true,
-        image: {
-          url: "/images/timeline-vibe-coding.png",
-          alt: "AI Tools for Development",
-          width: 80,
-          height: 80
-        },
       },
       nodeType: 'accent',
     },
@@ -161,36 +150,30 @@ function Timeline() {
       id: '2025',
       year: '2025',
       professional: {
-        title: "Continuación de CLUN",
-        description: "Mantenimiento y mejoras de la API de CLUN, añadiendo nuevas funcionalidades e integraciones.",
+        title: t('node2025Prof'),
+        description: t('node2025ProfDesc'),
         active: true,
         link: "#project-clun"
       },
       personal: {
-        title: "LolImprove y finalización de Gym App",
-        description: "Desarrollo de LolImprove, aplicación para mejorar en League of Legends, y finalización de la aplicación Gym App.",
+        title: t('node2025Pers'),
+        description: t('node2025PersDesc'),
         active: true,
-        image: {
-          url: "/images/timeline-lolimprove.png",
-          alt: "LolImprove Project",
-          width: 80,
-          height: 60
-        },
         link: "#project-lolimprove"
       },
       nodeType: 'accent',
     },
     {
       id: 'future',
-      year: 'Futuro',
+      year: language === 'es' ? 'Futuro' : 'Future',
       professional: {
-        title: "Arquitecto de Software",
-        description: "Evolucionar al rol de arquitectura de software, liderando decisiones técnicas y diseñando soluciones escalables.",
+        title: t('nodeFutureProf'),
+        description: t('nodeFutureProfDesc'),
         active: true,
       },
       personal: {
-        title: "Startup Propia",
-        description: "Desarrollar mi propia startup tecnológica, aplicando todo el conocimiento adquirido durante mi carrera.",
+        title: t('nodeFutureMot'),
+        description: t('nodeFutureMotDesc'),
         active: true,
       },
       nodeType: 'future',
@@ -358,12 +341,15 @@ function Timeline() {
               className="inline-block group"
             >
               <div className="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-md">
-                <img 
+                <OptimizedImage 
                   src={node.professional.image.url} 
                   alt={node.professional.image.alt}
                   className="transition-transform group-hover:scale-105 duration-200"
                   width={node.professional.image.width || 80}
                   height={node.professional.image.height || 60}
+                  loading="lazy"
+                  placeholder="skeleton"
+                  objectFit="cover"
                 />
               </div>
             </a>
@@ -419,12 +405,15 @@ function Timeline() {
               className="inline-block group"
             >
               <div className="overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 shadow-md">
-                <img 
+                <OptimizedImage 
                   src={node.personal.image.url} 
                   alt={node.personal.image.alt}
                   className="transition-transform group-hover:scale-105 duration-200"
                   width={node.personal.image.width || 80}
                   height={node.personal.image.height || 60}
+                  loading="lazy"
+                  placeholder="skeleton"
+                  objectFit="cover"
                 />
               </div>
             </a>

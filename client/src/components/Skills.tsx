@@ -40,7 +40,7 @@ function Skills() {
       title: t('design'),
       color: 'text-purple-500 dark:text-purple-300',
       gradientColors: 'from-purple-600 to-fuchsia-600 dark:from-purple-400 dark:to-fuchsia-400',
-      skills: ['JasperReports', 'AI Coding Assistants', 'Cursor', 'Claude', 'Ollama', 'Windsurf', 'n8n']
+      skills: ['JasperReports', 'AI Coding Assistants', 'Cursor', 'Claude Code', 'Claude', 'Ollama', 'Windsurf', 'n8n']
     },
     {
       id: 'mobileDev',

@@ -42,31 +42,31 @@ function Header() {
               onClick={() => scrollToSection('about')} 
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
             >
-              About
+              {t('about')}
             </button>
             <button 
               onClick={() => scrollToSection('timeline')} 
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
             >
-              Timeline
+              {t('timeline')}
             </button>
             <button 
               onClick={() => scrollToSection('skills')} 
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
             >
-              Skills
+              {t('skills')}
             </button>
             <button 
               onClick={() => scrollToSection('projects')} 
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
             >
-              Projects
+              {t('projects')}
             </button>
             <button 
               onClick={() => scrollToSection('contact')} 
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
             >
-              Contact
+              {t('contact')}
             </button>
           </nav>
 
@@ -128,31 +128,31 @@ function Header() {
                 onClick={() => scrollToSection('about')} 
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
               >
-                About
+                {t('about')}
               </button>
               <button 
                 onClick={() => scrollToSection('timeline')} 
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
               >
-                Timeline
+                {t('timeline')}
               </button>
               <button 
                 onClick={() => scrollToSection('skills')} 
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
               >
-                Skills
+                {t('skills')}
               </button>
               <button 
                 onClick={() => scrollToSection('projects')} 
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
               >
-                Projects
+                {t('projects')}
               </button>
               <button 
                 onClick={() => scrollToSection('contact')} 
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
               >
-                Contact
+                {t('contact')}
               </button>
             </nav>
           </div>

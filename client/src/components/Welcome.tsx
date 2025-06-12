@@ -1,9 +1,14 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 
 function Welcome() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  
+  // Debug: Log current language and translation
+  console.log('Welcome component - Current language:', language);
+  console.log('Welcome component - welcomeDescription:', t('welcomeDescription'));
 
   return (
     <section className="mb-16 mt-8 relative" id="about">
@@ -15,10 +20,18 @@ function Welcome() {
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
           <div className="w-full md:w-1/3 flex justify-center">
             <Card className="overflow-hidden w-64 h-64 relative shadow-lg border-2 border-primary/20 dark:border-primary/30 transition-all duration-300 hover:shadow-xl hover:scale-105 dark:bg-gray-800/80">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent dark:from-primary/30"></div>
-              <div className="w-full h-full bg-cover bg-center rounded-md overflow-hidden" 
-                   style={{ backgroundImage: `url('/images/profile.jpg')` }}>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent dark:from-primary/30 z-10"></div>
+              <OptimizedImage 
+                src="/images/profile.jpg"
+                alt="Alberto Bueno Lamana - Full Stack Developer"
+                className="w-full h-full rounded-md"
+                width={256}
+                height={256}
+                loading="eager"
+                priority={true}
+                placeholder="blur"
+                objectFit="cover"
+              />
             </Card>
           </div>
           <div className="w-full md:w-2/3">
@@ -26,20 +39,25 @@ function Welcome() {
               <span className="gradient-text">Alberto</span> <span className="accent-text italic dark:text-blue-400">Bueno</span> Lamana
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground dark:text-gray-300 mb-6 leading-relaxed">
-              Desarrollador web <span className="bold-text dark:text-blue-300">apasionado</span> en la creación de aplicaciones web modernas y soluciones escalables. Mi enfoque se centra en el desarrollo <span className="highlight">Full Stack</span>, principalmente Angular desde la versión 6 y Java desde la versión 8. <span className="subtle-text">Entusiasta de los servicios cloud especialmente de <span className="animated-underline dark:text-blue-300">AWS</span>.</span>
+              {t('welcomeDescription')}
             </p>
             <div className="flex flex-wrap gap-3">
+              <a 
+                href="https://www.credly.com/badges/6b6535e9-8cdb-4c79-b445-c48ee300aa15/linked_in?t=s5p476"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary/5 dark:bg-primary/10 border-none px-4 py-2 hover:bg-primary/15 dark:hover:bg-primary/20 transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-md rounded-lg border bg-card text-card-foreground shadow-sm text-sm font-medium dark:text-gray-200 hover:text-primary dark:hover:text-blue-400"
+              >
+                {t('awsCertified')}
+              </a>
               <Card className="bg-primary/5 dark:bg-primary/10 border-none px-4 py-2 hover:bg-primary/10 dark:hover:bg-primary/15 transition-all duration-200 cursor-default hover:scale-105">
-                <span className="text-sm font-medium dark:text-gray-200">AWS Certified Developer</span>
+                <span className="text-sm font-medium dark:text-gray-200">{t('fullStackDev')}</span>
               </Card>
               <Card className="bg-primary/5 dark:bg-primary/10 border-none px-4 py-2 hover:bg-primary/10 dark:hover:bg-primary/15 transition-all duration-200 cursor-default hover:scale-105">
-                <span className="text-sm font-medium dark:text-gray-200">Full Stack Developer</span>
+                <span className="text-sm font-medium dark:text-gray-200">{t('angularSpecialist')}</span>
               </Card>
               <Card className="bg-primary/5 dark:bg-primary/10 border-none px-4 py-2 hover:bg-primary/10 dark:hover:bg-primary/15 transition-all duration-200 cursor-default hover:scale-105">
-                <span className="text-sm font-medium dark:text-gray-200">Angular Specialist</span>
-              </Card>
-              <Card className="bg-primary/5 dark:bg-primary/10 border-none px-4 py-2 hover:bg-primary/10 dark:hover:bg-primary/15 transition-all duration-200 cursor-default hover:scale-105">
-                <span className="text-sm font-medium dark:text-gray-200">Java Developer</span>
+                <span className="text-sm font-medium dark:text-gray-200">{t('javaDeveloper')}</span>
               </Card>
             </div>
           </div>

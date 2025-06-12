@@ -34,7 +34,7 @@ function Goals() {
     {
       id: 'interests',
       title: t('areasOfInterest'),
-      description: 'AI Coding Assistants, Cursor, Claude, Ollama, n8n'
+      description: 'AI Coding Assistants, Cursor, Claude Code, Claude, Ollama, n8n'
     }
   ];
 

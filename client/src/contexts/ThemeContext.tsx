@@ -8,11 +8,11 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  // Always default to dark mode
+  // Default to light mode
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    // Return true (dark mode) by default, only use light if explicitly saved
-    return savedTheme ? savedTheme === 'dark' : true;
+    // Return false (light mode) by default, only use dark if explicitly saved
+    return savedTheme ? savedTheme === 'dark' : false;
   });
 
   useEffect(() => {

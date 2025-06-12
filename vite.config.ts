@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig({
   plugins: [
@@ -17,6 +18,23 @@ export default defineConfig({
           ),
         ]
       : []),
+    // Image optimization plugin for production builds
+    ...(process.env.NODE_ENV === "production" ? [
+      viteImagemin({
+        gifsicle: { optimizationLevel: 7 },
+        mozjpeg: { quality: 80 },
+        pngquant: { quality: [0.6, 0.8] },
+        svgo: {
+          plugins: [
+            { name: 'removeViewBox', active: false },
+            { name: 'removeEmptyAttrs', active: false },
+          ],
+        },
+        webp: { quality: 80 },
+        // Generate WebP versions of images
+        optipng: { optimizationLevel: 7 },
+      })
+    ] : []),
   ],
   resolve: {
     alias: {
@@ -29,5 +47,14 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    assetsDir: "assets",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+        },
+      },
+    },
   },
+  base: '/',
 });

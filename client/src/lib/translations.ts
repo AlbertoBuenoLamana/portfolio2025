@@ -4,9 +4,12 @@ type TranslationKeys = {
   // Header
   pageTitle: string;
   contact: string;
+  about: string;
+  timeline: string;
+  skills: string;
+  projects: string;
   
   // Timeline
-  timeline: string;
   timelineDesc: string;
   professional: string;
   personal: string;
@@ -55,7 +58,6 @@ type TranslationKeys = {
   nodeFutureMotDesc: string;
   
   // Skills
-  skills: string;
   skillsDesc: string;
   frontend: string;
   backend: string;
@@ -65,9 +67,9 @@ type TranslationKeys = {
   softSkills: string;
   
   // Projects
-  projects: string;
   projectsDesc: string;
   viewDetails: string;
+  comingSoon: string;
   
   project1Title: string;
   project1Desc: string;
@@ -80,6 +82,24 @@ type TranslationKeys = {
   
   project4Title: string;
   project4Desc: string;
+  
+  // Individual Project Translations
+  projectGymAppTitle: string;
+  projectGymAppDesc: string;
+  projectLolImproveTitle: string;
+  projectLolImproveDesc: string;
+  projectYeezyScrapperTitle: string;
+  projectYeezyScrapperDesc: string;
+  projectSeleniumFifaTitle: string;
+  projectSeleniumFifaDesc: string;
+  projectMainRailTitle: string;
+  projectMainRailDesc: string;
+  projectMorabancTitle: string;
+  projectMorabancDesc: string;
+  projectCarnetJovenTitle: string;
+  projectCarnetJovenDesc: string;
+  projectClunTitle: string;
+  projectClunDesc: string;
   
   // Goals
   goalsSection: string;
@@ -105,6 +125,13 @@ type TranslationKeys = {
   persMot3: string;
   persMot4: string;
   
+  // Welcome
+  welcomeDescription: string;
+  awsCertified: string;
+  fullStackDev: string;
+  angularSpecialist: string;
+  javaDeveloper: string;
+  
   // Footer
   copyright: string;
 };
@@ -114,9 +141,12 @@ export const translations: Record<Language, TranslationKeys> = {
     // Header
     pageTitle: 'Alberto Bueno Lamana',
     contact: 'Contacto',
+    about: 'Acerca de',
+    timeline: 'Trayectoria',
+    skills: 'Habilidades',
+    projects: 'Proyectos',
     
     // Timeline
-    timeline: 'Trayectoria Profesional',
     timelineDesc: 'Mi recorrido profesional desde 2019 hasta la actualidad, con un vistazo hacia el futuro.',
     professional: 'Profesional',
     personal: 'Personal',
@@ -151,8 +181,8 @@ export const translations: Record<Language, TranslationKeys> = {
     
     node2024Prof: 'Proyecto CLUN',
     node2024ProfDesc: 'Desarrollo de API con Spring Boot 3 y Java 21 con integraciones',
-    node2024Pers: 'Vibe Coding',
-    node2024PersDesc: 'Uso de herramientas de IA como Cursor, Windsurf, Claude y Ollama para desarrollo',
+    node2024Pers: 'Desarrollo Asistido por IA',
+    node2024PersDesc: 'Adopción de herramientas de IA como Cursor, Windsurf, Claude Code, Claude y Ollama para revolucionar el flujo de desarrollo',
     
     node2025Prof: 'Especialización Cloud',
     node2025ProfDesc: 'Objetivo: Profundizar en servicios cloud y arquitecturas escalables',
@@ -165,7 +195,6 @@ export const translations: Record<Language, TranslationKeys> = {
     nodeFutureMotDesc: 'Angular, Spring Boot, AWS, AI Coding Assistants, TypeScript, Python',
     
     // Skills
-    skills: 'Habilidades',
     skillsDesc: 'Tecnologías y herramientas que he aprendido a lo largo de mi carrera.',
     frontend: 'Frontend',
     backend: 'Backend',
@@ -175,9 +204,9 @@ export const translations: Record<Language, TranslationKeys> = {
     softSkills: 'Bases de Datos',
     
     // Projects
-    projects: 'Proyectos Destacados',
     projectsDesc: 'Una selección de proyectos profesionales y personales en los que he trabajado.',
     viewDetails: 'Ver detalles',
+    comingSoon: 'Próximamente disponible',
     
     project1Title: 'MainRail (2020-2023)',
     project1Desc: 'Proyecto para mantenimiento de ferrocarriles. Migración de Polymer 2 a Polymer 3 y posteriormente trabajo en PHP y Polymer.',
@@ -191,17 +220,35 @@ export const translations: Record<Language, TranslationKeys> = {
     project4Title: 'Gym App (2022-2025)',
     project4Desc: 'Aplicación para gestión de gimnasios con Angular, Spring Boot, AWS y DynamoDB.',
     
+    // Individual Project Translations
+    projectGymAppTitle: 'Gym App',
+    projectGymAppDesc: 'Aplicación web full-stack para gestión de gimnasios desarrollada con Angular 19 y Spring Boot (Java), implementando una arquitectura moderna con CI/CD en AWS (CodeBuild, CodeDeploy), base de datos NoSQL DynamoDB y siguiendo las mejores prácticas de desarrollo ágil. La aplicación ofrece gestión de rutinas de ejercicios, planes de dieta personalizados y seguimiento de progreso, utilizando Material Design para una interfaz moderna y responsive, con un backend robusto que implementa seguridad JWT, patrones de diseño empresariales y aprovecha la escalabilidad y rendimiento de DynamoDB para el almacenamiento de datos.',
+    projectLolImproveTitle: 'LolImprove',
+    projectLolImproveDesc: 'Como apasionado jugador de League of Legends, desarrollé como hobby una aplicación full-stack utilizando React, TypeScript, FastAPI y SQLAlchemy para mejorar mi experiencia de juego. Mi proyecto incluye gestión de tutoriales en video, análisis de mis sesiones y organización personalizada de campeones con una interfaz que me permite visualizar mi progreso y establecer objetivos adaptados a mi estilo de juego.',
+    projectYeezyScrapperTitle: 'Yeezy Scrapper',
+    projectYeezyScrapperDesc: 'Creación de un script de python que verificaba el precio de unas zapatillas en stockx, utilizando SAM de AWS.',
+    projectSeleniumFifaTitle: 'Selenium FIFA',
+    projectSeleniumFifaDesc: 'Creación de un proyecto con Java y Selenium que se dedicaba a hacer clicks y simulaba el uso de un humano a la hora de comprar/vender jugadores del FIFA, de esta manera sacaba beneficios con la moneda virtual del juego.',
+    projectMainRailTitle: 'MainRail',
+    projectMainRailDesc: 'Comencé en MainRail realizando pruebas unitarias con Selenium, probando funcionalidades como resultado del conocimiento adquirido de la aplicación. Inicialmente desarrollado en PHP puro como backend y Polymer 2 como frontend. Se trataba de un proyecto innovador para el mantenimiento de ferrocarriles con diferentes módulos. Durante los primeros 6 meses de este proyecto, se llevó a cabo una migración de Polymer 2 a Polymer 3. Una vez migrado, nos encontramos en un proceso de estabilización del proyecto, ya que presentaba muchos errores/fallas hasta que finalmente fue operativo para su implementación/venta. Posteriormente, el proyecto se convirtió en una \'productivización\' en la que surgieron nuevos desarrollos en busca de funcionalidades adicionales que el cliente solicitaba, como mejoras en el propio producto. Terminé mejorando la aplicación a Angular 11 y Lumen, siendo utilizada por más de 5 clientes. Durante el proceso, realicé un análisis de posibles mejoras que Angular tendría en comparación con Polymer, actualizando consultas complejas en PostgreSQL que estaban escalando con el tiempo. También adquirí experiencia en servicios de AWS, implementando cada proyecto en instancias EC2 y bases de datos RDS.',
+    projectMorabancTitle: 'Morabanc',
+    projectMorabancDesc: 'Proyecto enfocado en el sector bancario, desarrollado en Angular 13. La tarea consiste en replicar las funcionalidades de la antigua plataforma web en AngularJS en una nueva tecnología como Angular 13, analizando cuál podría ser la mejor manera de hacer que este proyecto funcione, teniendo en cuenta principalmente el rendimiento.',
+    projectCarnetJovenTitle: 'Carnet Joven Islas Baleares',
+    projectCarnetJovenDesc: 'Creación desde cero de una plataforma de usuario, desarrollada en Java 8 usando (Spring, Hibernate, JPA, Maven) como parte del backend y un frontend desarrollado en Angular 7, el proyecto se basaba en gestión/validación de usuarios para luego ser enviados vía archivos CSV a una integración con un banco para la generación de tarjetas, también incluye generación de PDF con consultas complejas usando JasperReports para generación de reportes. Debido a las comunicaciones con las aplicaciones, se desarrollaron algunas APIs en AWS usando: S3, SES, API Gateway, funciones Lambda. Desplegado en Tomcat y usando MySQL como base de datos. Actualmente continúa siendo mantenido por mí en posibles incidencias que ocurren con usuarios.',
+    projectClunTitle: 'CLUN',
+    projectClunDesc: 'Inicio de 0 de una API usando Spring Boot 3 y Java 21, mantenida y desarrollada en su totalidad por mí, con varias integraciones con plataformas del cliente, así como enriquecer usuarios de aplicación móvil y web, API con documentación y testing de endpoints en swagger.',
+    
     // Goals
     goalsSection: 'Objetivos y Motivación',
     goalsDesc: 'Mis aspiraciones profesionales y lo que me motiva en el desarrollo de software.',
     profGoals: 'Objetivos Profesionales',
     persMotivations: 'Motivaciones Personales',
     currentTech: 'Tecnologías Actuales',
-    currentTechDesc: 'En 2024 he iniciado mi viaje en Vibe Coding, utilizando herramientas de IA como Ollama, n8n para automatización de flujos de trabajo y diversas herramientas de codificación asistida por IA para mejorar mi productividad de desarrollo.',
+    currentTechDesc: 'En 2024 he adoptado el desarrollo asistido por IA, utilizando herramientas como Claude Code, Ollama, n8n para automatización de flujos de trabajo y diversas herramientas de codificación asistida por IA para mejorar mi productividad de desarrollo.',
     
     modernFrontend: 'Angular & TypeScript',
     backendCloud: 'Spring Boot & AWS',
-    areasOfInterest: 'AI Coding & Automatización',
+    areasOfInterest: 'IA y Automatización',
     
     // Professional Goals List
     profGoal1: 'Expandir mi experiencia en servicios cloud de AWS.',
@@ -213,18 +260,28 @@ export const translations: Record<Language, TranslationKeys> = {
     persMot1: 'Completar proyectos personales como Gym App y LolImprove.',
     persMot2: 'Continuar explorando la integración de LLMs con desarrollo.',
     persMot3: 'Optimizar flujos de trabajo con automatización y AI coding.',
-    persMot4: 'Especializarme en Vibe Coding, integrando desarrollo con IA y automatización para mejorar procesos.',
+    persMot4: 'Especializarme en desarrollo asistido por IA, integrando herramientas como Claude Code y automatización para mejorar procesos.',
+    
+    // Welcome
+    welcomeDescription: 'Desarrollador web apasionado en la creación de aplicaciones web modernas y soluciones escalables. Mi enfoque se centra en el desarrollo Full Stack, principalmente Angular desde la versión 6 y Java desde la versión 8. Entusiasta de los servicios cloud especialmente de AWS.',
+    awsCertified: 'AWS Certified Developer',
+    fullStackDev: 'Full Stack Developer',
+    angularSpecialist: 'Angular Specialist',
+    javaDeveloper: 'Java Developer',
     
     // Footer
-    copyright: '© 2024 Alberto Bueno Lamana'
+    copyright: '© 2025 Alberto Bueno Lamana'
   },
   en: {
     // Header
     pageTitle: 'Alberto Bueno Lamana',
     contact: 'Contact',
+    about: 'About',
+    timeline: 'Timeline',
+    skills: 'Skills',
+    projects: 'Projects',
     
     // Timeline
-    timeline: 'Professional Journey',
     timelineDesc: 'My professional journey from 2019 to present, with a look toward the future.',
     professional: 'Professional',
     personal: 'Personal',
@@ -259,8 +316,8 @@ export const translations: Record<Language, TranslationKeys> = {
     
     node2024Prof: 'CLUN Project',
     node2024ProfDesc: 'API development with Spring Boot 3 and Java 21 with integrations',
-    node2024Pers: 'Vibe Coding',
-    node2024PersDesc: 'Using AI tools like Cursor, Windsurf, Claude and Ollama for development',
+    node2024Pers: 'AI-Assisted Development',
+    node2024PersDesc: 'Adopting AI tools like Cursor, Windsurf, Claude Code, Claude and Ollama to revolutionize development workflow',
     
     node2025Prof: 'Cloud Specialization',
     node2025ProfDesc: 'Goal: Deepen knowledge in cloud services and scalable architectures',
@@ -273,7 +330,6 @@ export const translations: Record<Language, TranslationKeys> = {
     nodeFutureMotDesc: 'Angular, Spring Boot, AWS, AI Coding Assistants, TypeScript, Python',
     
     // Skills
-    skills: 'Skills',
     skillsDesc: 'Technologies and tools I have learned throughout my career.',
     frontend: 'Frontend',
     backend: 'Backend',
@@ -283,9 +339,9 @@ export const translations: Record<Language, TranslationKeys> = {
     softSkills: 'Databases',
     
     // Projects
-    projects: 'Featured Projects',
     projectsDesc: 'A selection of professional and personal projects I have worked on.',
     viewDetails: 'View details',
+    comingSoon: 'Coming soon',
     
     project1Title: 'MainRail (2020-2023)',
     project1Desc: 'Railway maintenance project. Migration from Polymer 2 to Polymer 3 and later work with PHP and Polymer.',
@@ -299,13 +355,31 @@ export const translations: Record<Language, TranslationKeys> = {
     project4Title: 'Gym App (2022-2025)',
     project4Desc: 'Application for gym management with Angular, Spring Boot, AWS and DynamoDB.',
     
+    // Individual Project Translations
+    projectGymAppTitle: 'Gym App',
+    projectGymAppDesc: 'Full-stack web application for gym management developed with Angular 19 and Spring Boot (Java), implementing a modern architecture with CI/CD on AWS (CodeBuild, CodeDeploy), NoSQL DynamoDB database and following agile development best practices. The application offers exercise routine management, personalized diet plans and progress tracking, using Material Design for a modern and responsive interface, with a robust backend that implements JWT security, enterprise design patterns and leverages the scalability and performance of DynamoDB for data storage.',
+    projectLolImproveTitle: 'LolImprove',
+    projectLolImproveDesc: 'As a passionate League of Legends player, I developed as a hobby a full-stack application using React, TypeScript, FastAPI and SQLAlchemy to improve my gaming experience. My project includes video tutorial management, session analysis and personalized champion organization with an interface that allows me to visualize my progress and set goals adapted to my playstyle.',
+    projectYeezyScrapperTitle: 'Yeezy Scrapper',
+    projectYeezyScrapperDesc: 'Creation of a Python script that checked sneaker prices on StockX, using AWS SAM.',
+    projectSeleniumFifaTitle: 'Selenium FIFA',
+    projectSeleniumFifaDesc: 'Creation of a project with Java and Selenium that was dedicated to making clicks and simulating human use when buying/selling FIFA players, thus making profits with the game\'s virtual currency.',
+    projectMainRailTitle: 'MainRail',
+    projectMainRailDesc: 'I started at MainRail performing unit tests with Selenium, testing functionalities as a result of knowledge acquired from the application. Initially developed in pure PHP as backend and Polymer 2 as frontend. It was an innovative project for railway maintenance with different modules. During the first 6 months of this project, a migration from Polymer 2 to Polymer 3 was carried out. Once migrated, we found ourselves in a project stabilization process, as it presented many errors/failures until it was finally operational for implementation/sale. Subsequently, the project became a \'productivization\' in which new developments arose in search of additional functionalities that the client requested, as improvements to the product itself. I ended up improving the application to Angular 11 and Lumen, being used by more than 5 clients. During the process, I performed an analysis of possible improvements that Angular would have compared to Polymer, updating complex queries in PostgreSQL that were scaling over time. I also gained experience in AWS services, implementing each project on EC2 instances and RDS databases.',
+    projectMorabancTitle: 'Morabanc',
+    projectMorabancDesc: 'Project focused on the banking sector, developed in Angular 13. The task consists of replicating the functionalities of the old web platform in AngularJS in a new technology like Angular 13, analyzing what could be the best way to make this project work, mainly taking into account performance.',
+    projectCarnetJovenTitle: 'Balearic Islands Youth Card',
+    projectCarnetJovenDesc: 'Creation from scratch of a user platform, developed in Java 8 using (Spring, Hibernate, JPA, Maven) as part of the backend and a frontend developed in Angular 7, the project was based on user management/validation to later be sent via CSV files to an integration with a bank for card generation, it also includes PDF generation with complex queries using JasperReports for report generation. Due to communications with applications, some APIs were developed in AWS using: S3, SES, API Gateway, Lambda functions. Deployed in Tomcat and using MySQL as database. Currently it continues to be maintained by me for possible incidents that occur with users.',
+    projectClunTitle: 'CLUN',
+    projectClunDesc: 'Started from scratch an API using Spring Boot 3 and Java 21, maintained and developed entirely by me, with several integrations with client platforms, as well as enriching mobile and web application users, API with documentation and endpoint testing in swagger.',
+    
     // Goals
     goalsSection: 'Goals and Motivation',
     goalsDesc: 'My professional aspirations and what motivates me in software development.',
     profGoals: 'Professional Goals',
     persMotivations: 'Personal Motivations',
     currentTech: 'Current Technologies',
-    currentTechDesc: 'In 2024 I started my Vibe Coding journey, using AI tools like Ollama, n8n for workflow automation, and various AI-assisted coding tools to enhance my development productivity.',
+    currentTechDesc: 'In 2024 I embraced AI-assisted development, using tools like Claude Code, Ollama, n8n for workflow automation, and various AI-assisted coding tools to enhance my development productivity.',
     
     modernFrontend: 'Angular & TypeScript',
     backendCloud: 'Spring Boot & AWS',
@@ -321,9 +395,16 @@ export const translations: Record<Language, TranslationKeys> = {
     persMot1: 'Complete personal projects like Gym App and LolImprove.',
     persMot2: 'Continue exploring LLM integration with development.',
     persMot3: 'Optimize workflows with automation and AI coding.',
-    persMot4: 'Specialize in Vibe Coding, integrating AI development and automation to improve processes.',
+    persMot4: 'Specialize in AI-assisted development, integrating tools like Claude Code and automation to improve processes.',
+    
+    // Welcome
+    welcomeDescription: 'Passionate web developer creating modern web applications and scalable solutions. My focus is on Full Stack development, primarily Angular since version 6 and Java since version 8. Enthusiast of cloud services, especially AWS.',
+    awsCertified: 'AWS Certified Developer',
+    fullStackDev: 'Full Stack Developer',
+    angularSpecialist: 'Angular Specialist',
+    javaDeveloper: 'Java Developer',
     
     // Footer
-    copyright: '© 2024 Alberto Bueno Lamana'
+    copyright: '© 2025 Alberto Bueno Lamana'
   }
 };

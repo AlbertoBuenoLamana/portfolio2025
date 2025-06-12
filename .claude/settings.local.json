@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(chmod:*)",
+      "Bash(node:*)",
+      "Bash(npm run check:*)",
+      "Bash(npx tsc:*)",
+      "Bash(timeout 30s npx vite build --mode development)",
+      "Bash(npm run optimize-images:*)",
+      "Bash(NODE_ENV=production npm run build)",
+      "Bash(pkill:*)",
+      "Bash(npm run build:*)",
+      "Bash(true)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(cp:*)",
+      "Bash(rg:*)"
+    ],
+    "deny": []
+  }
+}

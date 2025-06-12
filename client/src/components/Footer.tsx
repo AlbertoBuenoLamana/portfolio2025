@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from 'lucide-react';
 
 function Footer() {
   const { t } = useLanguage();
@@ -32,15 +32,6 @@ function Footer() {
               rel="noopener noreferrer"
             >
               <LinkedinIcon className="h-6 w-6" />
-            </a>
-            <a 
-              href="#" 
-              className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transform hover:scale-110 transition-all duration-200"
-              aria-label="Twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <TwitterIcon className="h-6 w-6" />
             </a>
           </div>
         </div>

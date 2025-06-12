@@ -3,6 +3,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { OptimizedImage } from '@/components/ui/optimized-image';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Linkedin, Globe, Github } from 'lucide-react';
 
 type Project = {
@@ -26,8 +28,8 @@ function Projects() {
     // Personal Projects
     {
       id: 'gymapp',
-      title: 'Gym App',
-      description: 'Aplicación web full-stack para gestión de gimnasios desarrollada con Angular 19 y Spring Boot (Java), implementando una arquitectura moderna con CI/CD en AWS (CodeBuild, CodeDeploy), base de datos NoSQL DynamoDB y siguiendo las mejores prácticas de desarrollo ágil. La aplicación ofrece gestión de rutinas de ejercicios, planes de dieta personalizados y seguimiento de progreso, utilizando Material Design para una interfaz moderna y responsive, con un backend robusto que implementa seguridad JWT, patrones de diseño empresariales y aprovecha la escalabilidad y rendimiento de DynamoDB para el almacenamiento de datos.',
+      title: t('projectGymAppTitle'),
+      description: t('projectGymAppDesc'),
       type: 'personal',
       year: '2022-2025',
       image: '/images/project-gymapp.png',
@@ -36,8 +38,8 @@ function Projects() {
     },
     {
       id: 'lolimprove',
-      title: 'LolImprove',
-      description: 'Como apasionado jugador de League of Legends, desarrollé como hobby una aplicación full-stack utilizando React, TypeScript, FastAPI y SQLAlchemy para mejorar mi experiencia de juego. Mi proyecto incluye gestión de tutoriales en video, análisis de mis sesiones y organización personalizada de campeones con una interfaz que me permite visualizar mi progreso y establecer objetivos adaptados a mi estilo de juego.',
+      title: t('projectLolImproveTitle'),
+      description: t('projectLolImproveDesc'),
       type: 'personal',
       year: '2025',
       image: '/images/project-lolimprove.png',
@@ -46,8 +48,8 @@ function Projects() {
     },
     {
       id: 'yeezyscrapper',
-      title: 'Yeezy Scrapper',
-      description: 'Creación de un script de python que verificaba el precio de unas zapatillas en stockx, utilizando SAM de AWS.',
+      title: t('projectYeezyScrapperTitle'),
+      description: t('projectYeezyScrapperDesc'),
       type: 'personal',
       year: '2021',
       image: '/images/project-yeezyscrapper.png',
@@ -56,8 +58,8 @@ function Projects() {
     },
     {
       id: 'seleniumfifa',
-      title: 'Selenium FIFA',
-      description: 'Creación de un proyecto con Java y Selenium que se dedicaba a hacer clicks y simulaba el uso de un humano a la hora de comprar/vender jugadores del FIFA, de esta manera sacaba beneficios con la moneda virtual del juego.',
+      title: t('projectSeleniumFifaTitle'),
+      description: t('projectSeleniumFifaDesc'),
       type: 'personal',
       year: '2019',
       image: '/images/project-seleniumfifa.png',
@@ -68,8 +70,8 @@ function Projects() {
     // Professional Projects
     {
       id: 'mainrail',
-      title: 'MainRail',
-      description: 'Comencé en MainRail realizando pruebas unitarias con Selenium, probando funcionalidades como resultado del conocimiento adquirido de la aplicación. Inicialmente desarrollado en PHP puro como backend y Polymer 2 como frontend. Se trataba de un proyecto innovador para el mantenimiento de ferrocarriles con diferentes módulos. Durante los primeros 6 meses de este proyecto, se llevó a cabo una migración de Polymer 2 a Polymer 3. Una vez migrado, nos encontramos en un proceso de estabilización del proyecto, ya que presentaba muchos errores/fallas hasta que finalmente fue operativo para su implementación/venta. Posteriormente, el proyecto se convirtió en una \'productivización\' en la que surgieron nuevos desarrollos en busca de funcionalidades adicionales que el cliente solicitaba, como mejoras en el propio producto. Terminé mejorando la aplicación a Angular 11 y Lumen, siendo utilizada por más de 5 clientes. Durante el proceso, realicé un análisis de posibles mejoras que Angular tendría en comparación con Polymer, actualizando consultas complejas en PostgreSQL que estaban escalando con el tiempo. También adquirí experiencia en servicios de AWS, implementando cada proyecto en instancias EC2 y bases de datos RDS.',
+      title: t('projectMainRailTitle'),
+      description: t('projectMainRailDesc'),
       type: 'professional',
       year: '2020-2023',
       image: '/images/project-mainrail.png',
@@ -78,8 +80,8 @@ function Projects() {
     },
     {
       id: 'morabanc',
-      title: 'Morabanc',
-      description: 'Proyecto enfocado en el sector bancario, desarrollado en Angular 13. La tarea consiste en replicar las funcionalidades de la antigua plataforma web en AngularJS en una nueva tecnología como Angular 13, analizando cuál podría ser la mejor manera de hacer que este proyecto funcione, teniendo en cuenta principalmente el rendimiento.',
+      title: t('projectMorabancTitle'),
+      description: t('projectMorabancDesc'),
       type: 'professional',
       year: '2023-2024',
       image: '/images/project-morabanc.png',
@@ -88,8 +90,8 @@ function Projects() {
     },
     {
       id: 'carnetjoven',
-      title: 'Carnet Joven Islas Baleares',
-      description: 'Creation from 0 of an user platform, developed in Java 8 using (Spring, Hibernate, JPA, Maven) as part of the back and a front end developed in Angular 7, the project was based on user management/validation to later be sent via CSV files to an integration with a bank for card generation, it also includes PDF generation with complex queries using JasperReports for report generation. Due to the communications with the applications, some APIs were developed in AWS using: S3, SES, API Gateway, Lambda functions. Deployed in Tomcat and using MySQL as database. At present it continues to be maintained by me in possible incidents that occur with users.',
+      title: t('projectCarnetJovenTitle'),
+      description: t('projectCarnetJovenDesc'),
       type: 'professional',
       year: '2019-2021',
       image: '/images/project-carnetjoven.png',
@@ -98,8 +100,8 @@ function Projects() {
     },
     {
       id: 'clun',
-      title: 'CLUN',
-      description: 'Inicio de 0 de una API usando Spring Boot 3 y Java 21, mantenida y desarrollada en su totalidad por mi, con varias integraciones con plataformas del cliente, asi como enriquecer usuarios de aplicacion movil y web, API con documentacion y testing de endpoints en swagger.',
+      title: t('projectClunTitle'),
+      description: t('projectClunDesc'),
       type: 'professional',
       year: '2024-2025',
       image: '/images/project-clun.png',
@@ -218,7 +220,8 @@ function Projects() {
   }, [activeTab]);
 
   return (
-    <section className="mb-12 pt-4 relative" id="projects">
+    <TooltipProvider>
+      <section className="mb-12 pt-4 relative" id="projects">
       {/* Background blob effect */}
       <div className="blob-effect w-80 h-80 opacity-20 right-[5%] top-[30%]"></div>
       
@@ -289,10 +292,13 @@ function Projects() {
                 >
                   <div className="mx-auto w-full max-w-[300px] pt-4">
                     <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
-                      <img 
+                      <OptimizedImage 
                         src={project.image} 
                         alt={project.title}
                         className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
+                        loading="lazy"
+                        placeholder="skeleton"
+                        objectFit="cover"
                       />
                     </div>
                   </div>
@@ -308,15 +314,28 @@ function Projects() {
                           </Badge>
                         )}
                         {project.url && (
-                          <a 
-                            href={project.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
-                            title="Ver sitio web"
-                          >
-                            <Globe size={18} />
-                          </a>
+                          project.url === '#' ? (
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <span className="text-gray-400 dark:text-gray-600 cursor-not-allowed">
+                                  <Globe size={18} />
+                                </span>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{t('comingSoon')}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          ) : (
+                            <a 
+                              href={project.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                              title="Ver sitio web"
+                            >
+                              <Globe size={18} />
+                            </a>
+                          )
                         )}
                         {project.github && (
                           <a 
@@ -359,10 +378,13 @@ function Projects() {
                 >
                   <div className="mx-auto w-full max-w-[300px] pt-4">
                     <div className="relative aspect-[3/2] bg-muted dark:bg-gray-700 overflow-hidden rounded-md shadow-sm">
-                      <img 
+                      <OptimizedImage 
                         src={project.image} 
                         alt={project.title}
                         className="w-full h-full object-cover object-center transition-transform hover:scale-105 duration-300"
+                        loading="lazy"
+                        placeholder="skeleton"
+                        objectFit="cover"
                       />
                     </div>
                   </div>
@@ -410,6 +432,7 @@ function Projects() {
         </Tabs>
       </div>
     </section>
+    </TooltipProvider>
   );
 }
 
