@@ -132,6 +132,14 @@ type TranslationKeys = {
   angularSpecialist: string;
   javaDeveloper: string;
   
+  // Contact
+  contactTitle: string;
+  contactDesc: string;
+  getInTouch: string;
+  
+  // Projects Disclaimer
+  professionalDisclaimer: string;
+  
   // Footer
   copyright: string;
 };
@@ -161,8 +169,8 @@ export const translations: Record<Language, TranslationKeys> = {
     
     node2020Prof: 'Desarrollador Full Stack en Inycom',
     node2020ProfDesc: 'Migración de Polymer 2 a Polymer 3 en proyecto MainRail',
-    node2020Pers: 'MainRail',
-    node2020PersDesc: 'Pruebas unitarias con Selenium y desarrollo del aplicativo para mantenimiento de ferrocarriles',
+    node2020Pers: 'Inicio de Gym App',
+    node2020PersDesc: 'Primeros pasos en el desarrollo personal de aplicación para gestión de gimnasios con Angular y tecnologías básicas',
     
     node2021Prof: 'Carnet Joven Islas Baleares',
     node2021ProfDesc: 'Desarrollo de plataforma en Java 8 y Angular 7 para gestión de usuarios',
@@ -171,18 +179,18 @@ export const translations: Record<Language, TranslationKeys> = {
     
     node2022Prof: 'Continuación en Inycom',
     node2022ProfDesc: 'Mantenimiento de productos y desarrollo de proyectos en Angular y Java',
-    node2022Pers: 'Inicio de Gym App',
-    node2022PersDesc: 'Comienzo del desarrollo de aplicación web para gestión de gimnasios con Angular y Spring Boot',
+    node2022Pers: 'Evolución de Gym App',
+    node2022PersDesc: 'Migración a Angular 12, integración con Spring Boot, implementación de nuevas funcionalidades y mejoras arquitecturales según necesidades del proyecto',
     
-    node2023Prof: 'AWS Certified Developer',
-    node2023ProfDesc: 'Certificación como AWS Developer Associate y proyecto Morabanc en Angular 13',
-    node2023Pers: 'Avance en Gym App',
-    node2023PersDesc: 'Implementación de CI/CD en AWS y uso de DynamoDB para la aplicación de gimnasios',
+    node2023Prof: 'Proyecto Morabanc',
+    node2023ProfDesc: 'Desarrollo en Angular 13 para proyecto bancario',
+    node2023Pers: 'Certificación AWS',
+    node2023PersDesc: 'Implementación de CI/CD en AWS y uso de DynamoDB para la aplicación de gimnasios. Obtención del certificado AWS Certified Developer – Associate en mi tiempo libre.',
     
     node2024Prof: 'Proyecto CLUN',
     node2024ProfDesc: 'Desarrollo de API con Spring Boot 3 y Java 21 con integraciones',
     node2024Pers: 'Desarrollo Asistido por IA',
-    node2024PersDesc: 'Adopción de herramientas de IA como Cursor, Windsurf, Claude Code, Claude y Ollama para revolucionar el flujo de desarrollo',
+    node2024PersDesc: 'Revolución en el desarrollo web: desde diciembre adopto Cursor para proyectos personales, experimento con LLM Studio, y posteriormente Claude Code y Windsurf. Transformación del paradigma de desarrollo tradicional hacia dirección supervisada de LLMs.',
     
     node2025Prof: 'Especialización Cloud',
     node2025ProfDesc: 'Objetivo: Profundizar en servicios cloud y arquitecturas escalables',
@@ -190,9 +198,9 @@ export const translations: Record<Language, TranslationKeys> = {
     node2025PersDesc: 'Aplicación full-stack con React, TypeScript, FastAPI y SQLAlchemy para mejorar en League of Legends',
     
     nodeFutureProf: 'Visión Profesional',
-    nodeFutureProfDesc: 'Arquitectura de sistemas cloud y desarrollo full-stack a gran escala',
+    nodeFutureProfDesc: 'Especialización en arquitecturas cloud escalables y desarrollo full-stack enterprise, integrando AI-assisted development como metodología principal para optimizar la productividad y calidad del código.',
     nodeFutureMot: 'Tecnologías Actuales',
-    nodeFutureMotDesc: 'Angular, Spring Boot, AWS, AI Coding Assistants, TypeScript, Python',
+    nodeFutureMotDesc: 'Stack principal: Angular, Spring Boot, AWS Cloud Services. Especialización en AI Coding Assistants: Cursor (Dic 2024+), LLM Studio, Claude Code, Windsurf. Lenguajes: TypeScript, Python, Java.',
     
     // Skills
     skillsDesc: 'Tecnologías y herramientas que he aprendido a lo largo de mi carrera.',
@@ -244,7 +252,7 @@ export const translations: Record<Language, TranslationKeys> = {
     profGoals: 'Objetivos Profesionales',
     persMotivations: 'Motivaciones Personales',
     currentTech: 'Tecnologías Actuales',
-    currentTechDesc: 'En 2024 he adoptado el desarrollo asistido por IA, utilizando herramientas como Claude Code, Ollama, n8n para automatización de flujos de trabajo y diversas herramientas de codificación asistida por IA para mejorar mi productividad de desarrollo.',
+    currentTechDesc: 'El desarrollo web ha evolucionado radicalmente con la IA. Desde diciembre de 2024 utilizo Cursor para proyectos personales, he experimentado con LLM Studio y diversos modelos de lenguaje, recientemente adoptado Claude Code y probado Windsurf. Esta revolución tecnológica ha transformado mi flujo de trabajo: ahora dedico menos tiempo codificando línea por línea y más tiempo dirigiendo y supervisando cómo los LLMs deben estructurar y optimizar las soluciones.',
     
     modernFrontend: 'Angular & TypeScript',
     backendCloud: 'Spring Boot & AWS',
@@ -260,7 +268,7 @@ export const translations: Record<Language, TranslationKeys> = {
     persMot1: 'Completar proyectos personales como Gym App y LolImprove.',
     persMot2: 'Continuar explorando la integración de LLMs con desarrollo.',
     persMot3: 'Optimizar flujos de trabajo con automatización y AI coding.',
-    persMot4: 'Especializarme en desarrollo asistido por IA, integrando herramientas como Claude Code y automatización para mejorar procesos.',
+    persMot4: 'Dominar el paradigma de desarrollo asistido por IA, especializándome en la dirección eficaz de LLMs como Cursor, Claude Code y Windsurf para optimizar la arquitectura y calidad del código.',
     
     // Welcome
     welcomeDescription: 'Desarrollador web apasionado en la creación de aplicaciones web modernas y soluciones escalables. Mi enfoque se centra en el desarrollo Full Stack, principalmente Angular desde la versión 6 y Java desde la versión 8. Entusiasta de los servicios cloud especialmente de AWS.',
@@ -268,6 +276,14 @@ export const translations: Record<Language, TranslationKeys> = {
     fullStackDev: 'Full Stack Developer',
     angularSpecialist: 'Angular Specialist',
     javaDeveloper: 'Java Developer',
+    
+    // Contact
+    contactTitle: 'Contacto',
+    contactDesc: '¡No dudes en contactarme para colaboraciones, oportunidades o simplemente para saludar!',
+    getInTouch: 'Ponte en Contacto',
+    
+    // Projects Disclaimer
+    professionalDisclaimer: 'Participé en el desarrollo de este proyecto como parte de mi experiencia profesional o personal. Las marcas o logos mostrados pertenecen a sus respectivos propietarios y se incluyen únicamente con fines ilustrativos.',
     
     // Footer
     copyright: '© 2025 Alberto Bueno Lamana'
@@ -296,8 +312,8 @@ export const translations: Record<Language, TranslationKeys> = {
     
     node2020Prof: 'Full Stack Developer at Inycom',
     node2020ProfDesc: 'Migration from Polymer 2 to Polymer 3 in MainRail project',
-    node2020Pers: 'MainRail',
-    node2020PersDesc: 'Unit testing with Selenium and development of railway maintenance application',
+    node2020Pers: 'Started Gym App',
+    node2020PersDesc: 'First steps in personal development of gym management application with Angular and basic technologies',
     
     node2021Prof: 'Balearic Islands Youth Card',
     node2021ProfDesc: 'Platform development with Java 8 and Angular 7 for user management',
@@ -306,18 +322,18 @@ export const translations: Record<Language, TranslationKeys> = {
     
     node2022Prof: 'Continued at Inycom',
     node2022ProfDesc: 'Product maintenance and project development with Angular and Java',
-    node2022Pers: 'Started Gym App',
-    node2022PersDesc: 'Beginning development of gym management web application with Angular and Spring Boot',
+    node2022Pers: 'Gym App Evolution',
+    node2022PersDesc: 'Migration to Angular 12, Spring Boot integration, implementation of new features and architectural improvements based on project needs',
     
-    node2023Prof: 'AWS Certified Developer',
-    node2023ProfDesc: 'AWS Developer Associate certification and Morabanc project with Angular 13',
-    node2023Pers: 'Gym App Progress',
-    node2023PersDesc: 'Implementation of CI/CD in AWS and DynamoDB for the gym application',
+    node2023Prof: 'Morabanc Project',
+    node2023ProfDesc: 'Angular 13 development for banking project',
+    node2023Pers: 'AWS Certification',
+    node2023PersDesc: 'Implementation of CI/CD in AWS and DynamoDB for the gym application. Obtained AWS Certified Developer – Associate certification in my free time.',
     
     node2024Prof: 'CLUN Project',
     node2024ProfDesc: 'API development with Spring Boot 3 and Java 21 with integrations',
     node2024Pers: 'AI-Assisted Development',
-    node2024PersDesc: 'Adopting AI tools like Cursor, Windsurf, Claude Code, Claude and Ollama to revolutionize development workflow',
+    node2024PersDesc: 'Web development revolution: since December adopting Cursor for personal projects, experimenting with LLM Studio, then Claude Code and Windsurf. Transforming from traditional development paradigm to supervised LLM direction.',
     
     node2025Prof: 'Cloud Specialization',
     node2025ProfDesc: 'Goal: Deepen knowledge in cloud services and scalable architectures',
@@ -325,9 +341,9 @@ export const translations: Record<Language, TranslationKeys> = {
     node2025PersDesc: 'Full-stack app with React, TypeScript, FastAPI and SQLAlchemy to improve at League of Legends',
     
     nodeFutureProf: 'Professional Vision',
-    nodeFutureProfDesc: 'Cloud system architecture and large-scale full-stack development',
+    nodeFutureProfDesc: 'Specialization in scalable cloud architectures and enterprise full-stack development, integrating AI-assisted development as the primary methodology to optimize productivity and code quality.',
     nodeFutureMot: 'Current Technologies',
-    nodeFutureMotDesc: 'Angular, Spring Boot, AWS, AI Coding Assistants, TypeScript, Python',
+    nodeFutureMotDesc: 'Core stack: Angular, Spring Boot, AWS Cloud Services. AI Coding Assistants specialization: Cursor (Dec 2024+), LLM Studio, Claude Code, Windsurf. Languages: TypeScript, Python, Java.',
     
     // Skills
     skillsDesc: 'Technologies and tools I have learned throughout my career.',
@@ -379,7 +395,7 @@ export const translations: Record<Language, TranslationKeys> = {
     profGoals: 'Professional Goals',
     persMotivations: 'Personal Motivations',
     currentTech: 'Current Technologies',
-    currentTechDesc: 'In 2024 I embraced AI-assisted development, using tools like Claude Code, Ollama, n8n for workflow automation, and various AI-assisted coding tools to enhance my development productivity.',
+    currentTechDesc: 'Web development has evolved radically with AI. Since December 2024, I\'ve been using Cursor for personal projects, experimented with LLM Studio and various language models, recently adopted Claude Code, and tried Windsurf. This technological revolution has transformed my workflow: I now spend less time coding line by line and more time directing and supervising how LLMs should structure and optimize solutions.',
     
     modernFrontend: 'Angular & TypeScript',
     backendCloud: 'Spring Boot & AWS',
@@ -395,7 +411,7 @@ export const translations: Record<Language, TranslationKeys> = {
     persMot1: 'Complete personal projects like Gym App and LolImprove.',
     persMot2: 'Continue exploring LLM integration with development.',
     persMot3: 'Optimize workflows with automation and AI coding.',
-    persMot4: 'Specialize in AI-assisted development, integrating tools like Claude Code and automation to improve processes.',
+    persMot4: 'Master the AI-assisted development paradigm, specializing in effectively directing LLMs like Cursor, Claude Code, and Windsurf to optimize code architecture and quality.',
     
     // Welcome
     welcomeDescription: 'Passionate web developer creating modern web applications and scalable solutions. My focus is on Full Stack development, primarily Angular since version 6 and Java since version 8. Enthusiast of cloud services, especially AWS.',
@@ -403,6 +419,14 @@ export const translations: Record<Language, TranslationKeys> = {
     fullStackDev: 'Full Stack Developer',
     angularSpecialist: 'Angular Specialist',
     javaDeveloper: 'Java Developer',
+    
+    // Contact
+    contactTitle: 'Contact Me',
+    contactDesc: 'Feel free to reach out for collaborations, opportunities, or just to say hello!',
+    getInTouch: 'Get In Touch',
+    
+    // Projects Disclaimer
+    professionalDisclaimer: 'I participated in the development of this project as part of my professional or personal experience. The brands or logos shown belong to their respective owners and are included for illustrative purposes only.',
     
     // Footer
     copyright: '© 2025 Alberto Bueno Lamana'

@@ -1,0 +1,33 @@
+{
+  "name": "cv-pdf-converter",
+  "version": "1.0.0",
+  "description": "Convert HTML CV files to PDF format",
+  "main": "html-to-pdf.js",
+  "scripts": {
+    "convert:all": "node html-to-pdf.js --all",
+    "convert:english": "node html-to-pdf.js --file cv_english",
+    "convert:spanish": "node html-to-pdf.js --file cv_spanish",
+    "convert:all:playwright": "node html-to-pdf-playwright.js --all",
+    "convert:english:playwright": "node html-to-pdf-playwright.js --file cv_english",
+    "convert:spanish:playwright": "node html-to-pdf-playwright.js --file cv_spanish",
+    "install:puppeteer": "npm install puppeteer",
+    "install:playwright": "npm install playwright",
+    "setup": "npm run install:puppeteer && mkdir -p ../pdfs",
+    "setup:playwright": "npm run install:playwright && mkdir -p ../pdfs"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.40.0"
+  },
+  "keywords": [
+    "pdf",
+    "html",
+    "cv",
+    "resume",
+    "converter"
+  ],
+  "author": "Alberto Bueno Lamana",
+  "license": "MIT"
+}

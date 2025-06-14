@@ -4,11 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 
 function Welcome() {
-  const { t, language } = useLanguage();
-  
-  // Debug: Log current language and translation
-  console.log('Welcome component - Current language:', language);
-  console.log('Welcome component - welcomeDescription:', t('welcomeDescription'));
+  const { t } = useLanguage();
 
   return (
     <section className="mb-16 mt-8 relative" id="about">

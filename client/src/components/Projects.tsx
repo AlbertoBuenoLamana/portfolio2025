@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Linkedin, Globe, Github } from 'lucide-react';
+import { Linkedin, Globe, Github, Info, Facebook } from 'lucide-react';
 
 type Project = {
   id: string;
@@ -18,6 +18,7 @@ type Project = {
   url?: string; // URL para proyectos con enlace web
   github?: string; // URL para proyectos con repositorio en GitHub
   linkedin?: string; // URL para proyectos con perfil de LinkedIn
+  facebook?: string; // URL para proyectos con perfil de Facebook
 };
 
 function Projects() {
@@ -76,7 +77,7 @@ function Projects() {
       year: '2020-2023',
       image: '/images/project-mainrail.png',
       technologies: ['PHP', 'Polymer 2/3', 'Angular 11', 'Lumen', 'PostgreSQL', 'AWS EC2', 'RDS', 'Selenium'],
-      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
+      linkedin: 'https://www.linkedin.com/company/mainrail/posts/'
     },
     {
       id: 'morabanc',
@@ -86,7 +87,7 @@ function Projects() {
       year: '2023-2024',
       image: '/images/project-morabanc.png',
       technologies: ['Angular 13', 'TypeScript', 'AngularJS', 'Performance Optimization', 'Migration'],
-      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
+      linkedin: 'https://www.linkedin.com/company/bibm-banco-internacional-banca-mora/'
     },
     {
       id: 'carnetjoven',
@@ -96,7 +97,7 @@ function Projects() {
       year: '2019-2021',
       image: '/images/project-carnetjoven.png',
       technologies: ['Java 8', 'Spring', 'Hibernate', 'Angular 7', 'AWS', 'JasperReports', 'MySQL', 'Tomcat'],
-      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
+      facebook: 'https://www.facebook.com/carnetjoveillesbalears/'
     },
     {
       id: 'clun',
@@ -106,7 +107,7 @@ function Projects() {
       year: '2024-2025',
       image: '/images/project-clun.png',
       technologies: ['Spring Boot 3', 'Java 21', 'REST API', 'Swagger', 'Integration'],
-      linkedin: 'https://www.linkedin.com/in/your-linkedin-profile/'
+      linkedin: 'https://www.linkedin.com/company/cooperativa-clun/'
     }
   ];
 
@@ -369,6 +370,24 @@ function Projects() {
           </TabsContent>
           
           <TabsContent value="professional" className="space-y-4">
+            {/* Professional Projects Disclaimer */}
+            <div className="flex justify-center mb-4">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="flex items-center gap-2 cursor-help px-3 py-2 bg-muted/30 dark:bg-gray-700/30 rounded-lg border border-muted dark:border-gray-600 hover:bg-muted/50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                    <Info className="h-4 w-4 text-muted-foreground dark:text-gray-400" />
+                    <span className="text-sm text-muted-foreground dark:text-gray-400 font-medium">
+                      {t('professional')} - Disclaimer
+                    </span>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent className="max-w-md p-4 text-left">
+                  <p className="text-sm leading-relaxed">
+                    {t('professionalDisclaimer')}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {sortedProfessionalProjects.map((project) => (
                 <Card 
@@ -408,6 +427,17 @@ function Projects() {
                             title="Ver en LinkedIn"
                           >
                             <Linkedin size={18} />
+                          </a>
+                        )}
+                        {project.facebook && (
+                          <a 
+                            href={project.facebook} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                            title="Ver en Facebook"
+                          >
+                            <Facebook size={18} />
                           </a>
                         )}
                       </div>

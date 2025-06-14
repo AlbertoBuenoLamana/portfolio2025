@@ -25,7 +25,7 @@ function Footer() {
               <GithubIcon className="h-6 w-6" />
             </a>
             <a 
-              href="https://linkedin.com/in/alberto-bueno-6b0344185/" 
+              href="https://www.linkedin.com/in/alberto-bueno-lamana-6b0344185/" 
               className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-blue-400 transform hover:scale-110 transition-all duration-200"
               aria-label="LinkedIn"
               target="_blank"

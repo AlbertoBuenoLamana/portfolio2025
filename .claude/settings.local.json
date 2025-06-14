@@ -16,7 +16,9 @@
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
       "Bash(cp:*)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "WebFetch(domain:www.linkedin.com)",
+      "Bash(mkdir:*)"
     ],
     "deny": []
   }

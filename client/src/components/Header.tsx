@@ -39,12 +39,6 @@ function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <button 
-              onClick={() => scrollToSection('about')} 
-              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
-            >
-              {t('about')}
-            </button>
-            <button 
               onClick={() => scrollToSection('timeline')} 
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
             >
@@ -61,6 +55,12 @@ function Header() {
               className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
             >
               {t('projects')}
+            </button>
+            <button 
+              onClick={() => scrollToSection('goals')} 
+              className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 animated-underline transition-colors duration-200"
+            >
+              {t('goals')}
             </button>
             <button 
               onClick={() => scrollToSection('contact')} 
@@ -125,12 +125,6 @@ function Header() {
           <div className="md:hidden py-4 transition-all duration-300 ease-in-out">
             <nav className="flex flex-col space-y-4">
               <button 
-                onClick={() => scrollToSection('about')} 
-                className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
-              >
-                {t('about')}
-              </button>
-              <button 
                 onClick={() => scrollToSection('timeline')} 
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
               >
@@ -147,6 +141,12 @@ function Header() {
                 className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
               >
                 {t('projects')}
+              </button>
+              <button 
+                onClick={() => scrollToSection('goals')} 
+                className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition-colors duration-200 py-2"
+              >
+                {t('goals')}
               </button>
               <button 
                 onClick={() => scrollToSection('contact')} 
